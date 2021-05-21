@@ -1,0 +1,12 @@
+# Enviroment
+.env
+ink.code-workspace
+
+# Pip
+Pipfile
+Pipfile.lock
+__pycache__
+
+# db
+db.sqlite3
+media
