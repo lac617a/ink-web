@@ -8,20 +8,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{% static 'css/index.css' %}">
 	<link rel="stylesheet" href="{% static 'css/header.css' %}">
+	<link rel="stylesheet" href="{% static 'css/section-first.css' %}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 	<title>tecnicos-ink.com | Servicio tecnico</title>
 </head>
 <body>
-	{%include 'components/header/header.html'%}
+	<header id="header-main">
+		{%include 'components/header/header.html'%}
+	</header>
 	<h1>Welcome to ink</h1>
+	<main id="section-main">
+		{%include 'home.html'%}
+	</main>
+	<footer id="footer-main"></footer>
 	<script>
 		document.addEventListener('DOMContentLoaded',()=>{
 			const nav = document.querySelector('#hamburger button')
+			const sidebar = document.querySelector('.navbar')
 			nav.addEventListener('click', e =>{
-				const navOpen = nav.classList.toggle('open')
-				if(nav.getAttribute('class') === 'open'){
-					console.log('open')
-				}else{console.log('close')}
+				nav.classList.toggle('open')
+				sidebar.classList.toggle('active')
 			})
 		})
 	</script>
