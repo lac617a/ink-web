@@ -1,1 +1,18 @@
 /* Style general */
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body{
+  overflow: hidden;
+}
+a{
+  text-decoration: none;
+  /* color: white; */
+}
+
+ul li{
+  list-style: none;
+}
