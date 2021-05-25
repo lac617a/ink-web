@@ -6,9 +6,23 @@
 =========================================
 */
 .wrapper-header{
-  background-color: #111;
   display: flex;
+  position: relative;
+  background-color: #1113;
   justify-content: space-between;
+  transition: all linear .3s;
+}
+.header-logo{position: relative;}
+#header-main{
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#header-main .wrapper-header.activa{
+  background-color: #111;
+  box-shadow:0 0 10px 1px rgba(0,0,0,.5);
 }
 .header-nav{
   background-image: url(../img/nav-bar.png);
@@ -40,8 +54,8 @@
   color: #efefef;
   padding: .5rem;
 }
-.navbar{animation-name: box-sidebar-close;}
-.navbar.active{animation-name: box-sidebar;}
+.navbar-custom{animation-name: box-sidebar-close;}
+.navbar-custom.active{animation-name: box-sidebar;}
 /*
 =========================================
           BOTTOM HAMBURGER X
@@ -88,7 +102,7 @@
 =========================================
 */
 @media only screen and (max-width:768px){
-  .navbar{
+  .navbar-custom{
     position: fixed;
     z-index: 100;
     right: 0;
@@ -100,25 +114,24 @@
     animation-fill-mode: forwards;
     animation-delay: .1s;
   }
-  .navbar .nav{
+  .navbar-custom .nav-custom{
     position: relative;
     display: block;
-    padding-top: 7rem;
+    padding-top: 7rem !important;
     background-color: #111;
     height: 100vh;
   }
-  .navbar .nav .item{
+  .navbar-custom .nav-custom .item-custom{
     position: relative;
     text-align: end;
     font-weight: 800;
-    font-size: 20px;
     padding: .5rem 0;
   }
-  .navbar .nav .item.actv{
+  .navbar-custom .nav-custom .item-custom.actv{
     background-color: #000;
     border-left: 5px solid #efe;
   }
-  .navbar .nav .item:nth-child(1)::before{
+  .navbar-custom .nav-custom .item-custom:nth-child(1)::before{
     position: absolute;
     display: block;
     content: 'Menu';
@@ -130,7 +143,7 @@
     text-align: center;
     text-shadow: 0 0 5px rgba(255,255,255,.3);
   }
-  .navbar .nav .item .link{
+  .navbar-custom .nav-custom .item-custom .link-custom{
     transition: all linear .1s;
     display: block;
     padding:.5rem;
@@ -141,15 +154,15 @@
 }
 /*! STOP */
 @media only screen and (min-width:769px){
-  .navbar .nav{
+  .navbar-custom .nav-custom{
     display: flex;
-    padding: 1.5rem;
+    padding: 1.5rem !important;
   }
-  .navbar .nav .item{
+  .navbar-custom .nav-custom .item-custom{
     margin: 0 .5rem;
     font-weight: 800;
   }
-  .navbar .nav .item .link{
+  .navbar-custom .nav-custom .item-custom .link-custom{
     transition: all linear .1s;
     display: block;
     padding:.5rem;
@@ -157,7 +170,7 @@
     background-color: #efe;
     border-radius: 1rem;
   }
-  .navbar .nav .item .link:hover{
+  .navbar-custom .nav-custom .item-custom .link-custom:hover{
     transform: scale(1.1);
     color: #efe;
     background-color: #111;

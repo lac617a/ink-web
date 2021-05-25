@@ -1,52 +1,5 @@
-<div class="main-wrapper-first">
-  <article class="content-first">
-    <div class="content-first">
-      <div class="loading-lazy">
-        {% load static %}
-        <div id="slider" class="slider-content">
-          <div class="slider-section">
-            <img class="slider__img" loading="lazy" src="{% static 'img/gamer-fondo.jpg'%}" alt="">
-          </div>
-          <div class="slider-section">
-            <img class="slider__img" loading="lazy" src="{% static 'img/gamer-fondo-2.jpeg'%}" alt="">
-          </div>
-          <div class="slider-section">
-            <img class="slider__img" loading="lazy" src="{% static 'img/gamer-fondo.jpg'%}" alt="">
-          </div>
-          <div class="slider-section">
-            <img class="slider__img" loading="lazy" src="{% static 'img/gamer-fondo-2.jpeg'%}" alt="">
-          </div>
-        </div>
-      </div>
-      <div class="slider-container-box">
-        <ul class="slider-box">
-          <li class="item-v1">
-            <div style="animation-duration: 5000ms;"></div>
-          </li>
-          <li class="item-v1">
-            <div style="animation-duration: 5000ms;"></div>
-          </li>
-          <li class="item-v1">
-            <div style="animation-duration: 5000ms;"></div>
-          </li>
-          <li class="item-v1">
-            <div style="animation-duration: 5000ms;"></div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </article>
-  <article class="content-first">
-    <div class="content-first">
-      <div class="loading-lazy">
-        {% load static %}
-        <video autoplay loop>
-          <source src="{% static 'img/video-1.mp4'%}" type="video/mp4"/>
-          <source src="{% static 'img/gamer.ogg'%}"   type="video/ogg"/>
-          <source src="{% static 'img/gamer.webm'%}"  type="video/webm"/>
-          Su Navegador NO SOPORTA la etiqueta VIDEO.
-        </video>
-      </div>
-    </div>
-  </article>
-</div>
+{%extends 'base.html'%}
+{% block content_main%}
+<article id="first">{%include 'components/body/section-first.html'%}</article>
+<article id="center">{%include 'components/body/section-center.html'%}</article>
+{% endblock %}
