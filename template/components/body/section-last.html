@@ -1,0 +1,36 @@
+<div class="container-fluid bg-danger pt-5 pb-5 text-white" style="padding: 0 1rem;">
+  <div class="row">
+    <div class="col-lg-12 text-center contact-padding">
+      <h2 class="contact_text">ponte en contacto con nosotros para fabricar tus ideas</h2>
+      <h6 class="text-white text-wrap">por favor llena el siguiente formulario para ponerte en contacto con nosotros y con gusto resolveremos tus dudas para llevar tu empresa a otro nivel y fabricar tus ideas</h6>
+    </div>
+  </div>
+  <div class="row padding-custom">
+    <div class="col-lg-6">
+      <div class="col-lg-12 d-flex">
+        <i class="fas fa-mobile-alt font-larger" style="padding: .5rem;"></i>
+        <span>
+          <span class="font-larger">CONTACTO</span>
+          <p>300 2370341</p>
+        </span>
+      </div>
+      <div class="col-lg-12 d-flex">
+        <i class="fas fa-map-marker-alt font-larger" style="padding: .5rem;"></i>
+        <span>
+          <span class="font-larger">Dirección</span>
+          <p>Carrera7#10-75, Piedecuesta, Santander</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.2069686107075!2d-73.05197698522679!3d6.984883294954084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6847bc4aedc11f%3A0x24db2d9621216949!2sINk%20DYN%20Soluciones%20Integrales!5e0!3m2!1ses-419!2sco!4v1622065719466!5m2!1ses-419!2sco" width="600" height="400" style="border:0; width: 100%;" allowfullscreen="" loading="lazy"></iframe>
+        </span>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <form action="/" method="POST">
+        {%csrf_token%}
+        <label for="mail">Email</label>
+        <input type="email" name="mail" id="mail">
+        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
