@@ -1,26 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import get_template
+from django.core.mail import message, send_mail
 
 # Create your views here.
-def send_email(mail,content):
-    context = {'mail':mail,'content':content}
-    template = get_template('send_correo.html')
-    content_template = template.render(context)
-    email = EmailMultiAlternatives(
-        "Un correo de prueba",
-        "INK DYE soluciones integrales",
-        settings.EMAIL_HOST_USER,
-        [mail]
-    )
-    email.attach_alternative(content_template,'text/html')
-    email.send()
 
 def windowMain(request):
     if request.method == 'POST':
+        subject = request.POST.get('subject')
         mail = request.POST.get('mail')
-        content = request.POST.get('content')
+        message = request.POST.get('content') + f' |Remitente {mail}'
+        gmail = settings.EMAIL_HOST_USER
+        email_from = gmail
 
-        send_email(mail,content)
+        recipent_list = [gmail]
+        send_mail(subject,message,email_from,recipent_list)
+        return redirect('/')
     return render(request,'home.html')
