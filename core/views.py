@@ -16,3 +16,6 @@ def windowMain(request):
         send_mail(subject,message,email_from,recipent_list)
         return redirect('/')
     return render(request,'home.html')
+
+def termsAndConditions(request):
+    return render(request,'termsAndCondition.html')

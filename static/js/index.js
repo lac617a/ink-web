@@ -6,13 +6,35 @@ document.addEventListener('DOMContentLoaded',()=>{
     loadVideo(y)
     navbar(y)
   }
+  formarDateWhatsapp()
 })
+
+function formarDateWhatsapp(){
+  const data_href = document.querySelector('#data-whatsapp')
+  const date = new Date()
+  let hours = date.getHours()
+  const amPm = hours >= 12 ? "PM":"AM"
+  hours = hours % 12
+  hours = hours ? hours:12
+  let good;
+  switch (true) {
+    case hours >= 12:
+      good = 'buenos tarde'
+      break;
+    case hours >= 6 && amPm === 'PM':
+      good = 'buenos noche'
+      break;
+    default:
+      good = 'buenos días'
+      break;
+  }
+  let render = `${data_href.dataset.href}Hola muy ${good}, Señor Luis González, quisiera hacer una cotización. Espero su mensaje.&send?phone=+573002370341`
+  render = render.replaceAll(',','%2C').replaceAll('.','%2E').replaceAll(' ','%20')
+  return data_href.setAttribute('href',render)
+}
 function navbar (y) {
   const nav = document.querySelector('#header-main .wrapper-header');
-  const mt5 = document.querySelector('.container-fluid margin-top-5');
-  if(y > 100){
-    return nav.classList.add('activa');
-  }else{return nav.classList.remove('activa');}
+  return y > 100 ? nav.classList.add('activa'):nav.classList.remove('activa')
 }
 
 function loadVideo (y){
@@ -24,15 +46,13 @@ function loadVideo (y){
   const vidHeight = video.offsetHeight;
   const vidMax = video.offsetTop;
   const vidMin = video.offsetTop - heightBrowser + vidHeight;
-  if(y > vidMin && y < vidMax){
-    return video.play()
-  }else{return video.pause()}
+  return y > vidMin && y < vidMax ? video.play():video.pause()
 }
 
 function btnHambuerger () {
   const nav = document.querySelector('#hamburger button')
   const sidebar = document.querySelector('.navbar-custom')
-  nav.addEventListener('click', () =>{
+  return nav.addEventListener('click', () =>{
     nav.classList.toggle('open')
     sidebar.classList.toggle('active')
   })

@@ -122,8 +122,8 @@
   border-left: 20px transparent solid ;
 }
 /* HOVER */
-.what_wrapper a:hover{color: #111;}
-.whatsapp_custom:hover{transform: scale(1.1);}
+.what_wrapper a:hover{color: #efe;}
+.whatsapp_custom:hover{transform: scale(1.1);background-color: rgba(30, 178, 247,.5);}
 .whatsapp_custom:hover .inf-whatsapp{display: block;}
 /*
 =========================================
@@ -189,10 +189,7 @@
 .wrapper:hover {box-shadow: 0 0 10px 1px rgba(0 0 0 / 0.5);}
 
 /* HOVER */
-.bg-custom form input:focus,textarea:focus{
-
-  box-shadow: 0 0 10px -1px rgba(30, 178, 247,.5);
-}
+.bg-custom form input:focus,textarea:focus{box-shadow: 0 0 10px -1px rgba(30, 178, 247,.5);}
 .container-button button:hover i {transform: translateX(25px);}
 .container-button button:hover {text-shadow: 0 0 5px #333;color: #eee;}
 
@@ -228,7 +225,7 @@
 @media only screen and (min-width: 1200px){
   .about-header .title {font-size: 42px;}
   .paddingb-5{padding-bottom: 3rem !important;}
-  .carousel-item.hvh{height: 100vh !important;}
+  /* .carousel-item.hvh{height: 100vh !important;} */
 }
 
 /*
@@ -237,7 +234,7 @@
 =========================================
 */
 @keyframes box-shadow{
-  0%{box-shadow: 0 0 1px -1px rgb(255,255,255,.1);}
-  50%{box-shadow: 0 0 10px 5px rgb(255,255,255,.3);}
-  100%{box-shadow: 0 0 1px -1px rgb(255,255,255,.1);}
+  0%{box-shadow: 0 0 2px 1px rgba(30, 178, 247,.5), 0 0 1px -1px rgb(255,255,255,.1);}
+  50%{box-shadow: 0 0 6px 2px rgba(30, 178, 247,.5), 0 0 5px 3px rgb(255,255,255,.3);}
+  100%{box-shadow: 0 0 2px 1px rgba(30, 178, 247,.5), 0 0 1px -1px rgb(255,255,255,.1);}
 }
