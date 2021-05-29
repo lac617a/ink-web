@@ -191,7 +191,37 @@
 /* HOVER */
 .bg-custom form input:focus,textarea:focus{box-shadow: 0 0 10px -1px rgba(30, 178, 247,.5);}
 .container-button button:hover i {transform: translateX(25px);}
+.st-service-card {
+  text-align: center;
+  border-radius: 1rem;
+  padding: 2rem 1rem;
+  cursor: pointer;
+  transition: all linear .2s;
+}
 .container-button button:hover {text-shadow: 0 0 5px #333;color: #eee;}
+.f5 {font-size: 1rem; color: #000;}
+.lh-copy {line-height: 1.5;}
+
+/* Hover st-service-card */
+.st-service-card:hover{
+  box-shadow: 0 0 10px -1px rgba(0,0,0,0.5);
+}
+
+
+/* terminos y condiciones */
+.custom-copy{
+  /* backdrop-filter: url(../img/logo.png); */
+  background-image: url(../img/logo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: .3;
+}
 
 /*
 =========================================
@@ -203,6 +233,7 @@
   .carousel-item.hvh{height: 80vh !important;}
   .contact-padding{padding: 0 !important;}
   .row.padding-custom{padding: 1rem 0 !important;}
+  .st-service-card {width: 100%;margin: 0;}
 }
 
 @media only screen and (min-width: 768px){
@@ -212,6 +243,7 @@
     -webkit-transform: translateY(-18%);
     transform: translateY(-18%);
   }
+  .st-service-card {width: 70%;margin: 0 auto;}
 }
 @media only screen and (min-width: 992px){
   .textbox-body {padding: 25px 30px;}

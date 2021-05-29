@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   // preload();
   document.body.onscroll = ()=>{
     const y = window.pageYOffset;
+  if(document.getElementById('content-first')){
     loadVideo(y)
+    formarDateWhatsapp()
+  }
     navbar(y)
   }
-  formarDateWhatsapp()
 })
 
 function formarDateWhatsapp(){
@@ -18,7 +20,7 @@ function formarDateWhatsapp(){
   hours = hours ? hours:12
   let good;
   switch (true) {
-    case hours >= 12:
+    case hours <= 12 && amPm === 'PM':
       good = 'buenos tarde'
       break;
     case hours >= 6 && amPm === 'PM':
@@ -28,7 +30,7 @@ function formarDateWhatsapp(){
       good = 'buenos días'
       break;
   }
-  let render = `${data_href.dataset.href}Hola muy ${good}, Señor Luis González, quisiera hacer una cotización. Espero su mensaje.&send?phone=+573002370341`
+  let render = `${data_href.dataset.href}Hola muy ${good}, Señor Luis González. Necesito asesoría.`
   render = render.replaceAll(',','%2C').replaceAll('.','%2E').replaceAll(' ','%20')
   return data_href.setAttribute('href',render)
 }
