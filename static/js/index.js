@@ -37,9 +37,10 @@ const box_slider = (change,remove) =>{
 }
 function preload(){
   const _width = document.documentElement.clientWidth
-  const _default = 659
+  console.log(_width)
+  const _default = 768
 
-  if(_width < 659){
+  if(_width < 768){
     return changesBox(0,null,0,0)
     .then(() => {return changesBox(1,0,_width)})
     .then(() => {return changesBox(2,1,_width*2)})
