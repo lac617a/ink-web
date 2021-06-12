@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+*{box-sizing: border-box;}
+.margin-top{
+  margin-top: 12rem;
+}
+.sidebar-categories{
+  border: 1px solid red;
+}
+
+.wrapper-card{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding-top: 5rem;
+  background-color: #f7f8fc;
+  font-family: "Roboto",sans-serif;
+  color: #10182f;
+}
+
+.container-card{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  /* flex-wrap: wrap; */
+}
+
+.card-product{
+  justify-content: center;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px -1px rgba(0,0,0,0.2);
+  border: 1px solid red;
+  overflow: hidden;
+  width: 300px;
+}
+.card-header-product{
+  overflow: hidden;
+  height: 200px;
+}
+.card-header-product img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.card-body-product{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  min-height: 250px;
+}
+
+.tag{
+  background-color: #cccccc;
+  border-radius: 50px;
+  font-size: 12px;
+  margin: 0;
+  color: #fff;
+  padding: 2px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.tag-teal {
+  background-color: #47bcd4;
+}
+.tag-purple {
+  background-color: #5e76bf;
+}
+.tag-pink {
+  background-color: #cd5b9f;
+}
+
+.card-body p {
+  font-size: 13px;
+  margin: 0 0 40px;
+}
+.user {
+  display: flex;
+  margin-top: auto;
+}

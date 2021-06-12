@@ -2,7 +2,7 @@
 	<div class="header-logo">
 		<div class="logo">
 			{% load static %}
-			<img width="150" height="80" class="log" src="{%static 'img/logo.png'%}" alt="Logo">
+			<a href="/"><img width="80" height="80" class="log" src="{%static 'img/logo.png'%}" alt="Logo"></a>
 		</div>
 	</div>
 	<div class="header-nav">
@@ -17,4 +17,31 @@
 			</button>
 		</div>
 	</div>
+</div>
+<div class="wrapper-header-res" id="whr">
+	<div class="home">
+		<a href="/"><i class="fas fa-home"></i></a>
+	</div>
+	<button class="seeker _private">
+		<i class="fas fa-search"></i>
+	</button>
+	<div data-search-id='true' class="search">
+		<div class="wrapper-search">
+			<div class="wrapper-input">
+				<form action="">
+					<input type="text" placeholder="Search..." name="search" id="search">
+					<button type="submit"><i class="fas fa-search"></i></button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="scroll-up">
+		<i class="fas fa-arrow-circle-up"></i>
+	</div>
+	{% if request.path == '/' %}
+	<button class="bar-cat _private">
+		<i class="fas fa-ellipsis-v"></i>
+	</button>
+	{%include 'components/header/nav-responsive.html'%}
+	{% endif %}
 </div>

@@ -1,0 +1,85 @@
+<div style='background-color: #212529;' class="container-fluid pt-5 pb-5 text-white" id="contact" style="padding: 0 1rem;">
+  <div class="row">
+    <div class="col-lg-12 text-center contact-padding">
+      <h2 class="contact_text">ponte en contacto con nosotros para fabricar tus ideas</h2>
+      <h6 class="text-white text-wrap">por favor llena el siguiente formulario para ponerte en contacto con nosotros y con gusto resolveremos tus dudas para llevar tu empresa a otro nivel y fabricar tus ideas</h6>
+    </div>
+  </div>
+  <div class="row padding-custom">
+    <div class="col-lg-6 pt-5">
+      <div class="col-lg-12">
+        <div class="wrapper_plugins">
+          <i class="fas fa-mobile-alt font-larger" style="padding: .5rem;"></i>
+          <div class="log_wrapper">
+            <span class="font-larger">CONTACTO</span>
+          </div>
+        </div>
+        <div class="what_wrapper">
+          <a
+            id="data-whatsapp"
+            target="_blank"
+            data-href="https://api.whatsapp.com/send/?phone=+573002370341&text="
+            title="Espero que podamos ayudarte en todo lo necesario!!"
+            href="">
+            <p class="whatsapp_custom">300 2370341</p>
+          </a>
+          <div class="inf-whatsapp">
+            <span>Comunícate con nosotros vía WhatsApp</span>
+            <i class="fab fa-whatsapp"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 d-flex">
+        <i class="fas fa-map-marker-alt font-larger" style="padding: .5rem;"></i>
+        <span>
+          <span class="font-larger">Dirección</span>
+          <p>Cra 7 N10-75, Piedecuesta, Santander</p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.2069686107075!2d-73.05197698522679!3d6.984883294954084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6847bc4aedc11f%3A0x24db2d9621216949!2sINk%20DYN%20Soluciones%20Integrales!5e0!3m2!1ses-419!2sco!4v1622065719466!5m2!1ses-419!2sco"
+            width="600"
+            height="300"
+            style="border:0; border-radius: 10px; box-shadow: 0 0 10px -1px rgba(0,0,0, .5); width: 100%;"
+            allowfullscreen=""
+            loading="lazy"></iframe>
+        </span>
+      </div>
+    </div>
+    <div class="col-lg-6 pt-5 bg-custom">
+      <form action="/" method="POST">
+        {%csrf_token%}
+        <input
+          placeholder="¿En qué podemos ayudarte?"
+          type="text"
+          name="subject"
+        ><br>
+        <input
+          placeholder="inkdye@gmail.com"
+          name="mail"
+          type="email"
+          id="mail"
+          required
+        >
+        <textarea
+          placeholder="¡Coméntanos tus dudas, detalladamente Gracias!"
+          name="content"
+          id="content"
+          cols="30"
+          rows="10"
+          required
+          minlength="10"
+        ></textarea>
+        <div class="wrapper-btn">
+          <div class="container-button">
+            <button type="submit" title="Enviar">
+              <span>Enviar</span>
+              <div class="container-font">
+                <i class="far fa-arrow-alt-circle-right"></i>
+                <i class="fas fa-rocket"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

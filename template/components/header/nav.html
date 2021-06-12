@@ -1,36 +1,38 @@
-<nav class="navbar">
-  <ul class="nav">
-    <li class="item actv">
-      <a class="link" href="#">
+<nav class="navbar-custom">
+  <ul class="nav-custom">
+    <li class="item-custom actv">
+      <a class="link-custom" href="/products">
         <div class="box-sidebar">
           <span>Nuestros productos</span>
           <i class="fas fa-boxes"></i>
         </div>
       </a>
     </li>
-    <li class="item">
-      <a class="link" href="#">
+    {%if request.path == '/'%}
+    <li class="item-custom">
+      <a class="link-custom" href="#about">
         <div class="box-sidebar">
           <span>Sobre nosotros</span>
           <i class="fas fa-users"></i>
         </div>
       </a>
     </li>
-    <li class="item">
-      <a class="link" href="#">
+    <li class="item-custom">
+      <a class="link-custom" href="#contact">
         <div class="box-sidebar">
           <span>Contanto</span>
           <i class="fas fa-address-book"></i>
         </div>
       </a>
     </li>
-    <li class="item">
-      <a class="link" href="#">
+    <li class="item-custom">
+      <a class="link-custom" href="#help">
         <div class="box-sidebar">
           <span>Ayuda</span>
           <i class="fas fa-hands-helping"></i>
         </div>
       </a>
     </li>
+    {%endif%}
   </ul>
 </nav>
