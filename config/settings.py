@@ -181,4 +181,5 @@ EMAIL_HOST_PASSWORD = config('PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
+# whitenoise 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
