@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="95px" height="95px" viewBox="0 0 95 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>instalacion</title>
+    <g id="instalacion" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="rhombus" transform="translate(46.000000, 47.000000) rotate(45.000000) translate(-46.000000, -47.000000) translate(1.000000, 4.000000)" fill-rule="nonzero">
+            <polygon id="Path" fill="#737C85" points="43.5287755 0.0161932232 2.38031816e-13 43.2480507 43.5287755 86 43.5287755 62.4335239 23.8525714 43 43.5287755 23.5664761"></polygon>
+            <polygon id="Path" fill="#0078F2" points="46.4712245 85.9838068 90 42.7517652 46.4712245 -3.05533376e-13 46.4712245 23.5664761 66.1474286 43 46.4712245 62.4335239"></polygon>
+        </g>
+    </g>
+</svg>
