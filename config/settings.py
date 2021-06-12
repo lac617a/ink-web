@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ["localhost","127.0.0.1","www.ink-dye.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost","127.0.0.1","ink-dye.herokuapp.com"]
 
 
 # Application definition
