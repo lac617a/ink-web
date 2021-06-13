@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content_main %}
+<div class="margin-top" style="margin-bottom: 3rem;">
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="alert alert-primary" role="alert">
+          <h1>Asegurese de revisar cada campo antes de darle al <strong>BOTON EDITAR</strong></h1>
+        </div>
+        <form class="p-1" method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="pdCode" class="form-label">Codigo del articulo</label>
+            {{query.pdCode}}
+            <div id="codeHelp" class="form-text">Siempre acuerdate de ponerle un codigo a tu articulo.</div>
+          </div>
+          <div class="mb-3">
+            <label for="pdName" class="form-label">Nombre del articulo</label>
+            {{query.pdName}}
+          </div>
+          <div class="mb-3">
+            <label for="pdPrice" class="form-label">Precio de venta al publico</label>
+            {{query.pdPrice}}
+            <div id="priceHelp" class="form-text">Tome en cuenta el precio adecuado para su articulo.</div>
+          </div>
+          <div class="mb-3">
+            <label for="pdBrand" class="form-label">Marca del articulo</label>
+            {{query.pdBrand}}
+            <div id="brandHelp" class="form-text">Este campo siempre es <strong>REQUERIDO</strong>.</div>
+          </div>
+          <div class="mb-3">
+            <label for="pdCategories" class="form-label">Categoria relacionada con el articulo</label>
+            {{query.pdCategories}}
+            <div id="categoriesHelp" class="form-text">Este campo siempre es <strong>REQUERIDO</strong>.</div>
+          </div>
+          <div class="mb-3">
+            <label for="pdDescription" class="form-label">Descripcion del articulo</label><br>
+            {{query.pdDescription}}
+          </div>
+          <div class="mb-3">
+            <label for="pdStock" class="form-label">En stock</label>
+            {{query.pdStock}}
+            <div id="stockHelp" class="form-text">Asegurese que cuenta con esa cantidad de articulos.</div>
+          </div>
+          <div class="mb-3">
+            {{query.pdImage}}
+          </div>
+          <div class="mb-3 form-check">
+            {{query.pdState}}
+            <label class="form-check-label" for="pdState">Visto / Oculto</label>
+          </div>
+          {{query.error}}
+          <button class="btn btn-success mt-2 w-100" type="submit">Editar</button>
+        </form>
+        <div class="col"><a style="display: block; text-align: end;" href="{% url 'Main:pro' %}">Volver al listado</a></div>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

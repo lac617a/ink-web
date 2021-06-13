@@ -8,6 +8,19 @@
   border: 1px solid red;
 }
 
+.wrapper-component{
+  position: absolute;
+  /* border: 1px solid blue; */
+  right: 0;
+  color: #f7f8fc;
+  background-color: #10182f;
+  border-bottom-left-radius: 5px;
+}
+.wrapper-component a i{
+  font-size: 18px;
+  padding: 10px;
+}
+
 .wrapper-card{
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -28,6 +41,7 @@
 }
 
 .card-product{
+  position: relative;
   justify-content: center;
   margin: 10px;
   background-color: #fff;

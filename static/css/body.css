@@ -1,3 +1,6 @@
+.carousel-item{height: 500px !important;}
+.carousel-item{height: 500px !important;}
+
 .textbox {
   padding: 10px;
   background-color: white;
@@ -232,7 +235,6 @@
 @media only screen and (max-width:768px){
   .textbox{margin: 10px 0;}
   .about-header .title {font-size: calc(1.36364vw + 25.63636px);}
-  .carousel-item.hvh{height: 80vh !important;}
   .contact-padding{padding: 0 !important;}
   .row.padding-custom{padding: 1rem 0 !important;}
   .st-service-card {width: 100%;margin: 0;}

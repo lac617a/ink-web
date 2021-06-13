@@ -8,5 +8,5 @@ Pipfile.lock
 __pycache__
 
 # db
-db.sqlite3
+#db.sqlite3
 media

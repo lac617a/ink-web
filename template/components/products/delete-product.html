@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content_main %}
+<div class="margin-top" style="margin-bottom: 3rem;">
+  <div class="container pb-5">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="alert alert-danger" role="alert">
+          <h1>Esta seguro de eliminar este <strong>Articulo</strong>?</h1>
+          <p>Tenga en cuenta que el articulo se eliminara permanentemente de la base de datos.</p>
+          <p>Dado caso que no quieras eliminar este articulo permanentemente, por favor seleccione el boton que dice <strong>Ocultar producto del listado.</strong></p>
+          <p><small>Esto lo que hara es ocultar el producto hasta que usted quiera volver a verlo si asi lo desea.</small></p>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Nombre:</strong>
+            <h2>{{product.pdName}}</h2>
+          </li>
+          <li class="list-group-item">
+            <strong>Precio:</strong>
+            <h3>{{product.pdPrice}}</h3>
+          </li>
+          <li class="list-group-item">
+            <strong>En stock:</strong>
+            <h3>{{product.pdStock}}</h3>
+          </li>
+          <li class="list-group-item">
+            <strong>Codigo:</strong>
+            <h3>{{product.pdCode}}</h3>
+          </li>
+          <li class="list-group-item">
+            <strong>Me gusta:</strong>
+            {% if auth.user != None %}
+            <h3>{{product.pdLikes}}</h3>
+            {% else %}
+            <h3>Este producto no contiene Likes</h3>
+            {% endif %}
+          </li>
+        </ul>
+        <form class="p-1" method="POST">
+          {% csrf_token %}
+          <button class="btn btn-danger mt-2 w-100" type="submit">Eliminar</button>
+        </form>
+        <div class="col">
+          <a style="background-color: #111; margin: .5rem 0; display: block; text-align: center; padding: .5rem; color: #EEDDE2; border-radius: 5px;" href="{% url 'Main:edit' product.id %}">Ocultar producto del listado<i class="far fa-eye-slash" style="padding: 0 .5rem; color: #EEDDE2;"></i></a>
+        </div>
+        <div class="col"><a style="display: block; text-align: end;" href="{% url 'Main:pro' %}">Volver al listado</a></div>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
