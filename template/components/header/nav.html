@@ -1,7 +1,7 @@
 <nav class="navbar-custom">
   <ul class="nav-custom">
     <li class="item-custom actv">
-      <a class="link-custom" href="/products">
+      <a class="link-custom" href="{% url 'Product:pro' %}">
         <div class="box-sidebar">
           <span>Nuestros productos</span>
           <i class="fas fa-boxes"></i>
@@ -9,7 +9,7 @@
       </a>
     </li>
     <li class="item-custom actv">
-      <a class="link-custom" href="/products/hide">
+      <a class="link-custom" href="{% url 'Product:hide' %}">
         <div class="box-sidebar">
           <span>Productos ocultos</span>
           <i class="fas fa-boxes"></i>
