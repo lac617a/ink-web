@@ -123,31 +123,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 CKEDITOR_CONFIGS = {
     'default': {
-        # tab key conversion space number
-        'tabSpaces': 2,
         # Toolbar buttons
-        'toolbar_Custom': [
-            ['Format'],
-            ['Smiley', 'CodeSnippet'],
-            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote'],
-            ['TextColor', 'BGColor'],
-            ['Link', 'Unlink'],
-            ['NumberedList', 'BulletedList','BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight','JustifyBlock'],
-            ['Maximize'],
-            ['Image','imageTextAlternative'],
-        ],
-        # Add Code Block Plug-ins
-        'allowedContent': True,
-        'extraPlugins': ','.join(['codesnippet']),
-        'codeSnippet_languages': {
-            'bash': 'Bash',
-            'css': 'CSS',
-            'django': 'Django',
-            'html': 'HTML',
-            'javascript': 'JavaScript',
-            'php': 'PHP',
-            'python': 'Python',
-        }
+        'toolbar_Custom': 'full',
     }
 }
 

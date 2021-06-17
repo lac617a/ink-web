@@ -1,5 +1,28 @@
 .carousel-item{height: 500px !important;}
 .carousel-item{height: 500px !important;}
+.pagination{
+  color: #efe;
+  padding: .5rem 0;
+  background-color: #111;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.page-link-custom a{
+  display: block;
+  color: #111;
+  background-color: rgb(30, 178, 247);
+  margin: 0 .5rem;
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 0 10px -1px rgba(0,0,0,.5);
+}
+.page-link-custom a:hover{
+  color: #efe;
+}
 
 .textbox {
   padding: 10px;
@@ -232,12 +255,17 @@
               RESPONSIVE
 =========================================
 */
+@media only screen and(min-width:425){
+}
+
 @media only screen and (max-width:768px){
   .textbox{margin: 10px 0;}
   .about-header .title {font-size: calc(1.36364vw + 25.63636px);}
   .contact-padding{padding: 0 !important;}
   .row.padding-custom{padding: 1rem 0 !important;}
   .st-service-card {width: 100%;margin: 0;}
+  .sidebar-categories{display: none;}
+  .mrg-top{margin-top: 0px; display: block;}
 }
 
 @media only screen and (min-width: 768px){
@@ -248,7 +276,12 @@
     transform: translateY(-20%);
   }
   .st-service-card {width: 70%;margin: 0 auto;}
+  .mrg-top{margin-top: 80px; display: block;}
+  .navX{display: block;}
+  .sidebar-categories{display: none;}
+
 }
+@media only screen and (min-width:769px){.navX{display: none;}}
 @media only screen and (min-width: 992px){
   .textbox{margin: 50px 0;}
   .textbox-body {padding: 25px 30px;}
@@ -258,6 +291,11 @@
   }
   .contact-padding{padding: 0 15rem !important;}
   .row.padding-custom{padding: 3rem 5rem 0 !important;}
+  .mrg-top{margin-top: 88px; display: block;}
+  
+}
+@media only screen and (min-width: 1024px){
+  .sidebar-categories{display: block;}
 }
 @media only screen and (min-width: 1200px){
   .about-header .title {font-size: 42px;}

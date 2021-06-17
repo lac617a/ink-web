@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from authentication.views import Login, logoutUser
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('',include('core.urls')),
     path('products/',include('products.urls')),
-    path('admin/', admin.site.urls),
+    path('productsAdmin/',include('products.urls_admin')),
+    path('accounts/login/',Login.as_view(),name="loginUser"),
+    path('logout/',logoutUser,name="logoutUser"),
 ]
 
 if settings.DEBUG:

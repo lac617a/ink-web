@@ -44,3 +44,7 @@ class ProductsForm(forms.ModelForm):
       'pdDescription','pdStock',
       'pdImage','pdState'
     ]
+    # widgets = {
+    #   'pdBrand':forms.SelectMultiple(attrs={'class':'form-control'}),
+    #   'pdCategories':forms.SelectMultiple(attrs={'class':'form-control'})
+    # }

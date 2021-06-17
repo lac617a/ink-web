@@ -78,6 +78,8 @@
   clip-path: inset(0 50% 0 50%);
   transition: clip-path linear .3s;
   padding: .5rem;
+  overflow-y: auto;
+  height: auto;
 }
 .wrapper-nav-bar.active{
   clip-path: inset(0 0 0 0);

@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.body.onscroll = ()=>{
     const winY = window.pageYOffset;
     scroll_up(winY,_BROWSERHEIGHT);
+    asidebar(winY,_BROWSERWIDTH)
     if(document.getElementById('content-first')){
       loadVideo(winY,_BROWSERHEIGHT);
       formarDateWhatsapp();
@@ -19,6 +20,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     navbar(winY,_BROWSERWIDTH);
   }
 })
+
+function asidebar(winY,wid){
+  const aside = document.querySelector('.sidebar-categories')
+  if(winY > 0 && wid > 768){
+    aside.classList.add('is_active')
+  }else{aside.classList.remove('is_active')}
+}
 
 const btn = document.querySelectorAll('.wrapper-header-res ._private')
 btn.forEach(item =>{

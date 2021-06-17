@@ -1,0 +1,27 @@
+<nav class="navbar-respons w-100">
+  <div class="dropdown w-100">
+    <button class="btn text-white dropdown-toggle w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Categoria
+    </button>
+    <ul class="dropdown-menu w-100 fw-bold" aria-labelledby="dropdownMenuButton1">
+      {% load product_extras %}
+      {% get_categories_aside as category %}
+      {% for item in category %}
+      <li><a class="dropdown-item" href="{% url 'Product:get-category-view' item.cgName %}">{{item.cgName}}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+<nav class="navbar-respons w-100">
+  <div class="dropdown w-100">
+    <button class="btn text-white dropdown-toggle w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Marcas
+    </button>
+    <ul class="dropdown-menu w-100 fw-bold" aria-labelledby="dropdownMenuButton1">
+      {% get_brands_aside as brand %}
+      {% for item in brand %}
+      <li><a class="dropdown-item" href="{% url 'Product:get-brands-view' item.brName %}">{{item.brName}}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>

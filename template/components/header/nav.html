@@ -1,24 +1,23 @@
 <nav class="navbar-custom">
   <ul class="nav-custom">
-    <li class="item-custom actv">
-      <a class="link-custom" href="{% url 'Product:pro' %}">
+    <li class="item-custom {% if request.path == '/' %}actv{%else%}{% endif %}">
+      <a class="link-custom" href="{% url 'Main:windowMain' %}">
+        <div class="box-sidebar">
+          <span>Inicio</span>
+          <i class="fas fa-home"></i>
+        </div>
+      </a>
+    </li>
+    <li class="item-custom {% if request.path == '/' %}{%else%}actv{% endif %}">
+      <a class="link-custom" href="{% url 'Product:list-products' %}">
         <div class="box-sidebar">
           <span>Nuestros productos</span>
           <i class="fas fa-boxes"></i>
         </div>
       </a>
     </li>
-    <li class="item-custom actv">
-      <a class="link-custom" href="{% url 'Product:hide' %}">
-        <div class="box-sidebar">
-          <span>Productos ocultos</span>
-          <i class="fas fa-boxes"></i>
-        </div>
-      </a>
-    </li>
-    {%if request.path == '/'%}
     <li class="item-custom">
-      <a class="link-custom" href="#about">
+      <a class="link-custom" href="/#about">
         <div class="box-sidebar">
           <span>Sobre nosotros</span>
           <i class="fas fa-users"></i>
@@ -26,21 +25,25 @@
       </a>
     </li>
     <li class="item-custom">
-      <a class="link-custom" href="#contact">
+      <a class="link-custom" href="/#contact">
         <div class="box-sidebar">
           <span>Contanto</span>
           <i class="fas fa-address-book"></i>
         </div>
       </a>
     </li>
+    <div class="navX">
+      {% include 'components/header/dropdown.html' %}
+    </div>
+    {#{% if request.user.is_authenticated and request.user.is_superuser %}#}
     <li class="item-custom">
-      <a class="link-custom" href="#help">
+      <a class="link-custom" href="{% url 'Admin:list-products' %}">
         <div class="box-sidebar">
-          <span>Ayuda</span>
-          <i class="fas fa-hands-helping"></i>
+          <span>Administrador</span>
+          <i class="fas fa-users"></i>
         </div>
       </a>
     </li>
-    {%endif%}
+    {#{% endif %}#}
   </ul>
 </nav>

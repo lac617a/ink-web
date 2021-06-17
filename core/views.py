@@ -19,3 +19,6 @@ def windowMain(request):
 
 def termsAndConditions(request):
   return render(request,'termsAndCondition.html')
+
+def admin(request):
+  return render(request,'admin.html')

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content_main %}
+<div class="mrg-top">
+  {% if not request.user.is_authenticated %}
+    {#{% include 'components/header/login-logout.html' %}#}
+  {% endif %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 position-relative">
+        <div class="sidebar-categories">
+          {% include 'sidebar-category.html' %}
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="row">
+          {% for query in qs %}
+          <div class="col-lg-4 col-md-6">
+            <div class="container-card">
+              <div class="card-product">
+                <div class="wrapper-component">
+                  <a href="{% url 'Admin:delete-products' query.id %}"><i class="far fa-trash-alt" style="color: #EE4072;"></i></a>
+                </div>
+                <div class="card-header-product">
+                  {% load static %}
+                  <img src="{{query.get_image_url}}" loading="lazy" alt="">
+                </div>
+                <div class="card-body-product">
+                  <div class="tag-all">
+                    <span class="tag tag-teal">{{query.pdCategories}}</span>
+                    <span class="tag tag-teal">{{query.pdBrand}}</span>
+                  </div>
+                  <h4>{{query.pdName}}</h4>
+                  <p>
+                    {{query.pdDescription|truncatechars_html:50|safe|striptags}}
+                    {% if query.pdDescription|length >= 50 %}<a href="{% url 'Product:more-view' query.id %}">Ver mas</a>{% endif %}
+                  </p>
+                  <div class="user"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {%  endfor %}
+        </div>
+        <!-- RENDER YOU LIST HERE. Now context_object_name must be qs or whatever name you call it-->
+        
+        <div class="pagination">
+          {% if qs.has_previous %}
+          <div class="page-link-custom">
+            <a href="?page={{ qs.previous_page_number }}">previous</a>
+          </div>
+          {% endif %}
+          <span class="current">
+            Page {{ qs.number }} of {{ qs.paginator.num_pages }}.
+          </span>
+          {% if qs.has_next %}
+          <div class="page-link-custom">
+            <a href="?page={{ qs.next_page_number }}">next</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
