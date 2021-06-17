@@ -5,7 +5,7 @@ from .views_admin import ListProdViewAdmin,UpdateProdViewAdmin,DeleteProdViewAdm
 app_name="Admin"
 
 urlpatterns = [
-  path('list-products/',login_required(ListProdViewAdmin.as_view()),name="list-products"),
-  path('edit-products/<int:pk>/',login_required(UpdateProdViewAdmin.as_view()),name="edit-products"),
-  path('delete-products/<int:pk>/',login_required(DeleteProdViewAdmin.as_view()),name="delete-products"),
+  path('list-products/',ListProdViewAdmin.as_view(),name="list-products"),
+  path('edit-products/<int:pk>/',UpdateProdViewAdmin.as_view(),name="edit-products"),
+  path('delete-products/<int:pk>/',DeleteProdViewAdmin.as_view(),name="delete-products"),
 ]
