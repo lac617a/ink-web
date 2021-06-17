@@ -1,7 +1,4 @@
-from django.core import paginator
 from django.shortcuts import redirect,render
-from django.urls.base import reverse
-from django.views.generic import View
 from django.urls import reverse_lazy
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.views.generic import DeleteView,UpdateView
@@ -10,7 +7,7 @@ from .views import ListProdView
 from .forms import ProductsForm
 
 class ListProdViewAdmin(ListProdView):
-  template_name = 'admin/products/lists-products.html'
+  template_name = 'adminProduct/products/lists-products.html'
   form_class = ProductsForm
 
   def get_queryset(self):
@@ -22,7 +19,8 @@ class ListProdViewAdmin(ListProdView):
     return context
   
   def get(self,request,*args,**kwargs):
-    paginate_by = request.GET.get('paginate_by',9) or 9
+    count = 10
+    paginate_by = request.GET.get('paginate_by',count) or count
     paginator = Paginator(self.get_queryset(),paginate_by)
     page = request.GET.get('page')
     try:
@@ -47,7 +45,7 @@ class ListProdViewAdmin(ListProdView):
 class UpdateProdViewAdmin(UpdateView):
   model = Products
   form_class = ProductsForm
-  template_name = 'admin/products/edit-products.html'
+  template_name = 'adminProduct/products/edit-products.html'
   success_url = reverse_lazy('Admin:list-products')
 
   def get_context_data(self,*args,**kwargs):

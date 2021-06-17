@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.core.exceptions import ObjectDoesNotExist
-from django.views.generic import View,DetailView,ListView
-from django.urls import reverse_lazy
+from django.views.generic import View,DetailView
+from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Brands, Category, Products
 from .forms import ProductsForm
@@ -12,9 +12,6 @@ class ListProdView(View):
   model = Products
   paginate_by = 10
   template_name = 'products/list-products.html'
-
-  def get_queryset(self):
-    return self.model.objects.filter(pdState=True)
   
   def get_context_data(self,*args,**kwargs):
     context = {}
@@ -23,9 +20,19 @@ class ListProdView(View):
     return context
 
   def get(self,request,*args,**kwargs):
+    # SEEKER
+    seeker = request.GET.get('search')
+    get_state = self.model.objects.filter(pdState=True)
+    if seeker:
+      get_state = self.model.objects.filter(
+        Q(pdName__icontains=seeker) |
+        Q(pdDescription__icontains=seeker) 
+      ).distinct()
+
+    # PAGINATION
     count = 9
     paginate_by = request.GET.get('paginate_by',count) or count
-    paginator = Paginator(self.get_queryset(),paginate_by)
+    paginator = Paginator(get_state,paginate_by)
     page = request.GET.get('page')
     try:
       paginated = paginator.get_page(page)
@@ -46,9 +53,6 @@ class GetCategoryProduView(View):
   model = Products
   template_name = 'products/get_select_prod_view.html'
 
-  def get_queryset(self,cgName):
-    return self.model.objects.filter(pdCategories=Category.objects.get(cgName=cgName))
-
   def get_context_data(self,*args,**kwargs):
     context = {}
     context['paginate_by'] = args[0]
@@ -56,9 +60,19 @@ class GetCategoryProduView(View):
     return context
 
   def get(self,request,slug,*args,**kwargs):
+    # SEEKER
+    seeker = request.GET.get('search')
+    get_state = self.model.objects.filter(pdState=True,pdCategories=Category.objects.get(cgName=slug))
+    if seeker:
+      get_state = self.model.objects.filter(
+        Q(pdName__icontains=seeker) |
+        Q(pdDescription__icontains=seeker),
+        pdState=True,pdCategories=Category.objects.get(cgName=slug)
+      ).distinct()
+    
     count = 9
     paginate_by = request.GET.get('paginate_by',count) or count
-    paginator = Paginator(self.get_queryset(slug),paginate_by)
+    paginator = Paginator(get_state,paginate_by)
     page = request.GET.get('page')
     try:
       paginated = paginator.get_page(page)
@@ -69,8 +83,28 @@ class GetCategoryProduView(View):
     return render(request,self.template_name,self.get_context_data(paginate_by,paginated))
 
 class GetBrandsProduView(GetCategoryProduView):
-  def get_queryset(self,brName):
-    return self.model.objects.filter(pdBrand=Brands.objects.get(brName=brName))
+
+  def get(self,request,slug,*args,**kwargs):
+    seeker = request.GET.get('search')
+    get_state = self.model.objects.filter(pdState=True,pdBrand=Brands.objects.get(brName=slug))
+    if seeker:
+      get_state = self.model.objects.filter(
+        Q(pdName__icontains=seeker) |
+        Q(pdDescription__icontains=seeker),
+        pdState=True,pdBrand=Brands.objects.get(brName=slug)
+      ).distinct()
+    
+    count = 9
+    paginate_by = request.GET.get('paginate_by',count) or count
+    paginator = Paginator(get_state,paginate_by)
+    page = request.GET.get('page')
+    try:
+      paginated = paginator.get_page(page)
+    except PageNotAnInteger:
+      paginated = paginator.get_page(1)
+    except EmptyPage:
+      paginated = paginator.page(paginator.num_pages)
+    return render(request,self.template_name,self.get_context_data(paginate_by,paginated))
 
 
 

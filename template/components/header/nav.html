@@ -35,7 +35,7 @@
     <div class="navX">
       {% include 'components/header/dropdown.html' %}
     </div>
-    {#{% if request.user.is_authenticated and request.user.is_superuser %}#}
+    {% if request.user.is_authenticated and request.user.is_superuser %}
     <li class="item-custom">
       <a class="link-custom" href="{% url 'Admin:list-products' %}">
         <div class="box-sidebar">
@@ -44,6 +44,6 @@
         </div>
       </a>
     </li>
-    {#{% endif %}#}
+    {% endif %}
   </ul>
 </nav>

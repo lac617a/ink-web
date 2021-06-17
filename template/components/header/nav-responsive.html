@@ -39,10 +39,20 @@
 </div>
 {% else %}
 <div class="wrapper-nav-bar">
+  <ul>
+    <li class="item-response">
+      <a class="link-response" href="{% url 'Product:list-products' %}">
+        <div class="box-sidebar">
+          <span>Nuestros productos</span>
+          <i class="fas fa-boxes"></i>
+        </div>
+      </a>
+    </li>
+  </ul>
   {% include 'components/header/dropdown.html' %}
   <nav class="navbar-response">
-    {#{% if request.user.is_authenticated and request.user.is_superuser %}#}
     <ul class="nav-response">
+      {% if request.user.is_authenticated and request.user.is_superuser %}
       <li class="item-response actv">
         <a class="link-response" href="{#{% url 'Admin:list-products' %}#}">
           <div class="box-sidebar">
@@ -51,16 +61,16 @@
           </div>
         </a>
       </li>
-      {#{% endif %}#}
+      {% endif %}
       {#{% if request.user.is_authenticated %}#}
-      <li class="item-response actv">
+      <!-- <li class="item-response actv">
         <a class="link-response" href="{#{% url 'logout' %}#}">
           <div class="box-sidebar">
             <span>Logout</span>
             <i class="fas fa-sign-out-alt"></i>
           </div>
         </a>
-      </li>
+      </li> -->
       {#{% endif %}#}
     </ul>
   </nav>

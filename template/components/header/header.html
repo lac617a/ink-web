@@ -5,6 +5,16 @@
 			<a href="/"><img width="80" height="80" class="log" src="{%static 'img/logo.png'%}" alt="Logo"></a>
 		</div>
 	</div>
+	{% if request.path not in '/' %}
+	<div class="wrapper-search pt-4">
+    <div class="wrapper-input">
+      <form method="GET">
+        <input type="text" placeholder="Search..." value="{{request.GET.search}}" name="search" id="search">
+        <button type="submit"><i class="fas fa-search" style="color: #fff;"></i></button>
+      </form>
+    </div>
+  </div>
+	{% endif %}
 	<div class="header-nav">
 		{%include 'components/header/nav.html'%}
 	</div>
@@ -22,19 +32,21 @@
 	<div class="home">
 		<a href="/"><i class="fas fa-home"></i></a>
 	</div>
+	{% if request.path not in '/' %}
 	<button class="seeker _private">
 		<i class="fas fa-search"></i>
 	</button>
 	<div data-search-id='true' class="search">
 		<div class="wrapper-search">
 			<div class="wrapper-input">
-				<form action="">
-					<input type="text" placeholder="Search..." name="search" id="search">
+				<form method="GET">
+					<input type="text" placeholder="Search..." value="{{request.GET.search}}" name="search" id="search">
 					<button type="submit"><i class="fas fa-search"></i></button>
 				</form>
 			</div>
 		</div>
 	</div>
+	{% endif %}
 	<div class="scroll-up">
 		<i class="fas fa-arrow-circle-up"></i>
 	</div>

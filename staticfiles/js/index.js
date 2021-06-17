@@ -12,11 +12,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.body.onscroll = ()=>{
     const winY = window.pageYOffset;
     scroll_up(winY,_BROWSERHEIGHT);
-    asidebar(winY,_BROWSERWIDTH)
     if(document.getElementById('content-first')){
       loadVideo(winY,_BROWSERHEIGHT);
       formarDateWhatsapp();
-    };
+    }else{
+      asidebar(winY,_BROWSERWIDTH)
+    }
     navbar(winY,_BROWSERWIDTH);
   }
 })

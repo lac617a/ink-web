@@ -14,9 +14,9 @@ segura y eficaz asi que analizalo con cuidado.
 """
 
 class Login(FormView):
-  template_name = ''
+  template_name = 'login.html'
   form_class = FormLogin
-  success_url = reverse_lazy('Product:list-products')
+  success_url = reverse_lazy('Admin:list-products')
 
   @method_decorator(csrf_protect)
   @method_decorator(never_cache)

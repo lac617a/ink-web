@@ -13,41 +13,40 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-9 shadow p-3 mb-5 mt-5 bg-body rounded">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="loading-lazy">
-              <img src="{{object.get_image_url}}" loading="lazy" class="img-fluid" alt="{{object.pdName}}">
-              <div class="text-float"><h3>{{object.pdName}}</h3></div>
+      <div class="col-lg-9">
+        <div class="vh-100" role="alert">
+          <div class="row shadow p-3 mb-5 mt-5 bg-body rounded">
+            <div class="col-lg-6">
+              <div class="loading-lazy">
+                <img src="{{object.get_image_url}}" loading="lazy" class="img-fluid" alt="{{object.pdName}}">
+                <div class="text-float"><h3>{{object.pdName}}</h3></div>
+              </div>
+              <div class="box-footer-more-view">
+                <!-- <div class="box-stock"><h4>En stock: <span class="box-more">{{object.pdStock}}</span></h4></div> -->
+                <div class="box-category"><h4>Categoria: <span class="box-more">{{object.pdCategories}}</span></h4></div>
+                <div class="box-brand"><h4>Marca: <span class="box-more">{{object.pdBrand}}</span></h4></div>
+              </div>
             </div>
-            <div class="box-footer-more-view">
-              <div class="box-stock"><h4>En stock: <span class="box-more">{{object.pdStock}}</span></h4></div>
-              <div class="box-category"><h4>Categoria: <span class="box-more">{{object.pdCategories}}</span></h4></div>
-              <div class="box-brand"><h4>Marca: <span class="box-more">{{object.pdBrand}}</span></h4></div>
-            </div>
-          </div>
-          <div class="col-lg-6 pt-2">
-            <h2>{{object.pdName}}</h2>
-            <figure>
-              <blockquote class="blockquote">
-                <p>Descricion del producto.</p>
-              </blockquote>
-              <figcaption class="blockquote-footer">
-                {{object.pdDescription|safe}}
-              </figcaption>
-            </figure>
-            <div class="shopping-box">
-              <div class="cart">
-                <a 
-                  id="data-whatsapp-shopping"
-                  target="_blank"
-                  data-href="https://api.whatsapp.com/send/?phone=+573002370341&text="
-                  data-shopping=""
-                  title="{{object.pdName}}" href=""
-                >
-                  <span>Comprar</span>
-                  <i class="fas fa-cart-arrow-down"></i>
-                </a>
+            <div class="col-lg-6 pt-2">
+              <h2>{{object.pdName}}</h2>
+              <figure>
+                <blockquote class="blockquote">
+                  <p>Descricion del producto.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                  {{object.pdDescription|safe}}
+                </figcaption>
+              </figure>
+              <div class="shopping-box">
+                <div class="cart">
+                  <a 
+                    target="_blank"
+                    title="{{object.pdName}}" href="https://api.whatsapp.com/send/?phone=+573002370341&text=Me interesa comprar este producto {{object.pdName}}, marca: {{object.pdBrand}}. Codigo del producto {{object.pdCode}}"
+                  >
+                    <span>Comprar</span>
+                    <i class="fas fa-cart-arrow-down"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -57,5 +56,3 @@
   </div>
 </div>
 {% endblock %}
-
-<h1>Hola {{object.pdName}}</h1>

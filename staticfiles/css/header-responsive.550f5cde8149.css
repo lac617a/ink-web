@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.wrapper-header-res{
+  position: fixed;
+  display: none;
+  z-index: 20;
+  bottom: 5%;
+  right: 10%;
+  left: 10%;
+  border-radius: 50px;
+  background-color: #111;
+  justify-content: space-between;
+  transition: all linear .3s;
+}
+.wrapper-header-res .fas{
+  font-size: 24px;
+  color: #ffff;
+  padding: 1.2rem;
+}
+.wrapper-header-res.active{
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+.wrapper-header-res .search{
+  position:absolute;
+  bottom: 130%;
+  left: 0;
+  right: 0;
+  background-color: #111;
+  border-radius: 10px;
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path linear .3s;
+  /* clip-path: polygon(0% 0%,100% 0,100% 100%,42% 100%,38% 90%,33% 100%,0 100%); */
+}
+.search.active{
+  clip-path: inset(0 0 0 0);
+}
+
+.search .wrapper-search{
+  padding: 1rem;
+}
+.wrapper-input{position: relative;}
+.wrapper-input input{
+  width: 100%;
+  padding: .2rem;
+  padding-left: .5rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px -1px rgba(255,255,255, .54);
+}
+.wrapper-search button{
+  position: absolute;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  right: -1px;
+  top: -1px;
+  bottom: -1px;
+  background-color: #111 !important;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.wrapper-search .fa-search{
+  font-size: 14px;
+  padding: 0 1rem;
+}
+
+.wrapper-nav-bar{
+  position: absolute;
+  bottom: 130%;
+  border-radius: 5px;
+  left: 0;
+  right: 0;
+  background-color: #111;
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path linear .3s;
+  padding: .5rem;
+  overflow-y: auto;
+  height: auto;
+}
+.wrapper-nav-bar.active{
+  clip-path: inset(0 0 0 0);
+}
+
+.wrapper-header-res button{
+  background-color: transparent;
+  border: none;
+}
+
+.link-response{
+  color: #ffff;
+  font-family: "Roboto",sans-serif;
+  font-weight: 600;
+}
+.link-response:hover{color: #cece;}

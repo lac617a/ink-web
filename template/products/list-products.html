@@ -13,12 +13,15 @@
       </div>
       <div class="col-lg-9">
         <div class="row">
+          {% if qs %}
           {% for query in qs %}
           <div class="col-lg-4 col-md-6">
             <div class="container-card">
               <div class="card-product">
                 <div class="wrapper-component">
+                  {% if request.user.is_authenticated and request.user.is_superuser %}
                   <a href="{% url 'Admin:delete-products' query.id %}"><i class="far fa-trash-alt" style="color: #EE4072;"></i></a>
+                  {% endif %}
                 </div>
                 <div class="card-header-product">
                   {% load static %}
@@ -36,12 +39,10 @@
                   </p>
                   <div class="shopping-box">
                     <div class="cart">
-                      <a 
-                        id="data-whatsapp-shopping"
+                      <a
                         target="_blank"
-                        data-href="https://api.whatsapp.com/send/?phone=+573002370341&text="
-                        data-shopping=""
-                        title="{{query.pdName}}" href=""
+                        title="{{query.pdName}}"
+                        href="https://api.whatsapp.com/send/?phone=+573002370341&text=Me interesa comprar este producto {{query.pdName}}, marca: {{query.pdBrand}}. Codigo del producto {{query.pdCode}}"
                       >
                         <span>Comprar</span>
                         <i class="fas fa-cart-arrow-down"></i>
@@ -60,7 +61,7 @@
           </div>
           {%  endfor %}
         </div>
-        <!-- RENDER YOU LIST HERE. Now context_object_name must be qs or whatever name you call it-->
+        <!-- RENDER YOU LIST HERE. Now context_query_name must be qs or whatever name you call it-->
         <div class="pagination">
           {% if qs.has_previous %}
           <div class="page-link-custom">
@@ -73,10 +74,28 @@
           {% if qs.has_next %}
           <div class="page-link-custom">
             <a href="?page={{ qs.next_page_number }}">next</a>
-            <!-- <a href="?page={{ qs.paginator.num_pages }}&param={{param}}">last &raquo;</a> -->
           </div>
           {% endif %}
         </div>
+        {% else %}
+        <div class="col-lg-12">
+          <div class="vh-100" role="alert">
+            <div class="alert-custom">
+              <div class="alert-modal">
+                <div class="alert-header">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="alert-body">
+                  <h2>Alerta!!!</h2>
+                  <p>Lo sentimos, pero el producto que estas buscando no se encuentra, o esta mal escrito.</p>
+                  <p>Por favor intentelo de nuevo. Gracias.</p>
+                </div>
+                <div class="alert-footer"><a class="btn btn-primary" href="{% url 'Product:list-products' %}">Seguir viendo <strong>productos</strong></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
