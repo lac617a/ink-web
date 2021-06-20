@@ -1,66 +1,13 @@
-{% extends 'admin.html' %}
+{% extends 'adminPage.html' %}
+{% load static %}
 {% block titulo %}INK | Productos{% endblock titulo %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/modal.css' %}">
+{% endblock %}
 {% block body %}
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Crear Productos
-</button> -->
+<button class="btn-modal modal-create btn-primary" data-product-url="{% url 'Admin:addProducts' %}" type="button">Crear registro</button>
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Crear Productos</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form role="form" method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          <div class="mb-3">
-            <label for="id_pdCode" class="form-label">Codigo del producto</label>
-            {{form.pdCode}}
-          </div>
-          <div class="mb-3">
-            <label for="id_pdName" class="form-label">Nombre del articulo</label>
-            {{form.pdName}}
-          </div>
-          <div class="mb-3">
-            <label for="id_pdPrice" class="form-label">Precio de venta al publico</label>
-            {{form.pdPrice}}
-          </div>
-          <div class="mb-3">
-            <label for="id_pdBrand" class="form-label">Marca del articulo</label>
-            {{form.pdBrand}}
-          </div>
-          <div class="mb-3">
-            <label for="id_pdCategories" class="form-label">Categoria relacionada con el articulo</label>
-            {{form.pdCategories}}
-          </div>
-          <div class="mb-3">
-            <label for="id_pdDescription" class="form-label">Descripcion del articulo</label><br>
-            {{form.pdDescription}}
-          </div>
-          <div class="mb-3">
-            <label for="id_pdStock" class="form-label">En stock</label>
-            {{form.pdStock}}
-          </div>
-          <div class="mb-3">
-            {{form.pdImage}}
-          </div>
-          <div class="mb-3 form-check">
-            {{form.pdState}}
-            <label class="form-check-label" for="id_pdState">Visto / Oculto</label>
-          </div>
-          <button class="btn btn-success mt-2 w-100" type="submit">Editar</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 <table class="table table-responsive">
   <thead class="bg-dark text-white">
     <tr>
@@ -70,7 +17,6 @@
       <th scope="col">Precio</th>
       <th scope="col">Marca</th>
       <th scope="col">Categoria</th>
-      <th scope="col">Stock</th>
       <th scope="col">Opciones</th>
     </tr>
   </thead>
@@ -83,10 +29,9 @@
       <td>{{item.pdPrice}}</td>
       <td>{{item.pdBrand}}</td>
       <td>{{item.pdCategories}}</td>
-      <td>{{item.pdStock}}</td>
       <td>
-        <button class="btn btn-primary w-100 m-1" onclick="open_modal_edit('{% url 'Admin:edit-products' item.id %}')">Editar</button>
-        <a class="btn btn-danger w-100 m-1" href="{% url 'Admin:delete-products' item.id %}">Eliminar</a>
+        <button class="btn-modal btn-primary" data-product-url="{% url 'Admin:editProducts' item.id %}" type="button">Editar</button>
+        <a class="btn btn-danger w-100 m-1" href="{% url 'Admin:deleteProducts' item.id %}">Eliminar</a>
       </td>
     </tr>
     {% endfor %}
@@ -105,19 +50,17 @@
   {% if qs.has_next %}
   <div class="page-link-custom">
     <a href="?page={{ qs.next_page_number }}">next</a>
-    <!-- <a href="?page={{ qs.paginator.num_pages }}&param={{param}}">last &raquo;</a> -->
   </div>
   {% endif %}
 </div>
-<div class="modal fade" tabindex="-1" aria-hidden="true" id="myModal" role="dialog"></div>
+<div class="modal-container">
+  <div class="modal-custom">
+    <button class="close" type="button"><i class="fas fa-times"></i></button>
+    <div class="modal-text"></div>
+  </div>
+</div>
 {% endblock%}
-{% block extrajs%}
-<script type="text/javascript">
-  var $ = jQuery.noConflict()
-  function open_modal_edit(url){
-    $('#myModal').load(url,function(){
-      $(this).modal('show');
-    })
-  }
-</script>
-{% endblock%}
+{% endblock% }
+{% block extrajs %}
+<script src="{% static 'js/admin.js' %}"></script>
+{% endblock %}

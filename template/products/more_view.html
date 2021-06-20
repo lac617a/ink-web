@@ -25,6 +25,16 @@
                 <!-- <div class="box-stock"><h4>En stock: <span class="box-more">{{object.pdStock}}</span></h4></div> -->
                 <div class="box-category"><h4>Categoria: <span class="box-more">{{object.pdCategories}}</span></h4></div>
                 <div class="box-brand"><h4>Marca: <span class="box-more">{{object.pdBrand}}</span></h4></div>
+                {% if object.pdPrice %}
+                <p>Precio: <small>{{object.pdPrice}}</small></p>
+                {% else %}
+                <p>Este producto no cuenta con un precio oficial, Por favor comuniquese directamente con nosotros.
+                  <a 
+                    target="_blank"
+                    title="{{object.pdName}}" href="https://api.whatsapp.com/send/?phone=+573002370341&text=Hola, Me interesaria saber el precio de este producto: {{object.pdName}}, marca: {{object.pdBrand}}. Codigo del producto {{object.pdCode}}"
+                  >
+                </p>
+                {% endif %}
               </div>
             </div>
             <div class="col-lg-6 pt-2">

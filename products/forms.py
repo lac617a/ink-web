@@ -1,50 +1,43 @@
 from django import forms
-from .models import Products
+from .models import Brands, Category, Products
 
 class ProductsForm(forms.ModelForm):
   def __init__(self,*args,**kwargs):
     super(ProductsForm,self).__init__(*args,**kwargs)
-    self.fields['pdCode'].widget.attrs = {
-      'class':'form-control',
-      'required': True
-    }
-    self.fields['pdName'].widget.attrs = {
-      'class':'form-control',
-      'required': True
-    }
-    self.fields['pdPrice'].widget.attrs = {
-      'class':'form-control',
-    }
-    self.fields['pdBrand'].widget.attrs = {
-      'class':'form-select',
-      'required': True
-    }
-    self.fields['pdCategories'].widget.attrs = {
-      'class':'form-select',
-      'required': True
-    }
-    self.fields['pdDescription'].widget.attrs = {
-      'class':'form-control w-100',
-      'rows':5,
-    }
-    self.fields['pdStock'].widget.attrs = {
-      'class':'form-control',
-    }
     self.fields['pdImage'].widget.attrs = {
       'class':'form-control',
-    }
-    self.fields['pdState'].widget.attrs = {
-      'class':'form-check-input',
     }
   class Meta:
     model = Products
     fields = [
       'pdCode','pdName','pdPrice',
       'pdBrand','pdCategories',
-      'pdDescription','pdStock',
+      'pdDescription',
       'pdImage','pdState'
     ]
-    # widgets = {
-    #   'pdBrand':forms.SelectMultiple(attrs={'class':'form-control'}),
-    #   'pdCategories':forms.SelectMultiple(attrs={'class':'form-control'})
-    # }
+    widgets = {
+      'pdCode':forms.NumberInput(attrs={'class':'form-control'}),
+      'pdName':forms.TextInput(attrs={'class':'form-control'}),
+      'pdPrice':forms.NumberInput(attrs={'class':'form-control'}),
+      'pdBrand':forms.Select(attrs={'class':'form-select'}),
+      'pdCategories':forms.Select(attrs={'class':'form-select'}),
+      'pdDescription':forms.Textarea(attrs={'class':'form-control w-100'}),
+      # 'pdImage':forms.TextInput(attrs={'class':'form-control','type':'file'}),
+      'pdState':forms.CheckboxInput(attrs={'class':'form-check-input'})
+    }
+
+class CategoryForm(forms.ModelForm):
+  class Meta:
+    model = Category
+    fields = ['cgName']
+    widgets = {
+      'cgName':forms.TextInput(attrs={'class':'form-control'})
+    }
+
+class BrandForm(forms.ModelForm):
+  class Meta:
+    model = Brands
+    fields = ['brName']
+    widgets = {
+      'brName':forms.TextInput(attrs={'class':'form-control'})
+    }

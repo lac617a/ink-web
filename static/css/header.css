@@ -44,12 +44,10 @@
 =========================================
 */
 .box-sidebar{
-  display: flex;
+  text-align: center;
   padding: 0 .5rem;
-  justify-content: space-between;
-  align-items: center;
-}
-.box-sidebar .fas{
+  font-size: 14px;
+}.box-sidebar .fas{
   align-items: center;
   color: #efefef;
   padding: .5rem;

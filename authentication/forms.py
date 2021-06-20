@@ -5,7 +5,7 @@ class FormLogin(AuthenticationForm):
     super(FormLogin,self).__init__(*args,**kwargs)
     self.fields['username'].widget.attrs = {
       'class':'form-control',
-      'placeholder':'Ingrese de un nombre se usuario valido'
+      'placeholder':'Ingrese su usuario'
     }
     self.fields['password'].widget.attrs = {
       'class':'form-control',

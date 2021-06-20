@@ -1,31 +1,51 @@
-<aside class="aside-list">
+<aside class="aside-list sidebar-categories pt-2">
   <div class="col-lg-12">
-    <h3>Categoria</h3>
-    <ul class="list-group mb-2">
-      {% load product_extras %}
-      {% get_categories_aside as category %}
-      {% for item in category %}
-      <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-          <div class="fw-bold"><a class="list-item-link" href="{% url 'Product:get-category-view' item.cgName %}">{{item.cgName}}</a></div>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h4>Categoria</h4>
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <ul class="list-group mb-2">
+              {% load product_extras %}
+              {% get_categories_aside as category %}
+              {% for item in category %}
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold"><a class="list-item-link" href="{% url 'Product:get-category-view' item.cgName|slugify %}">{{item.cgName}}</a></div>
+                </div>
+                <span class="badge bg-primary rounded-pill">{% get_count_category_aside item.cgName as count_cg %}{{count_cg}}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-        <span class="badge bg-primary rounded-pill">{% get_count_category_aside item.cgName as count_cg %}{{count_cg}}</span>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-  <div class="col-lg-12">
-    <h3>Marcas</h3>
-    <ul class="list-group">
-      {% get_brands_aside as brand %}
-      {% for item in brand %}
-      <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-          <div class="fw-bold"><a class="list-item-link" href="{% url 'Product:get-brands-view' item.brName %}">{{item.brName}}</a></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h4>Marcas</h4>
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <ul class="list-group">
+              {% get_brands_aside as brand %}
+              {% for item in brand %}
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold"><a class="list-item-link" href="{% url 'Product:get-brands-view' item.brName|slugify %}">{{item.brName}}</a></div>
+                </div>
+                <span class="badge bg-primary rounded-pill">{% get_count_brands_aside item.brName as count_br %}{{count_br}}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-        <span class="badge bg-primary rounded-pill">{% get_count_brands_aside item.brName as count_br %}{{count_br}}</span>
-      </li>
-      {% endfor %}
-    </ul>
+      </div>
+    </div>
   </div>
 </aside>

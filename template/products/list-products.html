@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block seeker %}
+  {% include 'components/header/seeker.html' %}
+{% endblock  %}
 {% block content_main %}
 <div class="mrg-top">
   {% if not request.user.is_authenticated %}
@@ -20,10 +23,10 @@
               <div class="card-product">
                 <div class="wrapper-component">
                   {% if request.user.is_authenticated and request.user.is_superuser %}
-                  <a href="{% url 'Admin:delete-products' query.id %}"><i class="far fa-trash-alt" style="color: #EE4072;"></i></a>
+                  <a href="{% url 'Admin:deleteProducts' query.id %}"><i class="far fa-trash-alt" style="color: #EE4072;"></i></a>
                   {% endif %}
                 </div>
-                <div class="card-header-product">
+                <div id="cardPd" class="card-header-product">
                   {% load static %}
                   <img src="{{query.get_image_url}}" loading="lazy" alt="">
                 </div>
@@ -37,21 +40,21 @@
                     {{query.pdDescription|truncatechars_html:50|safe|striptags}}
                     {% if query.pdDescription|length >= 50 %}<a href="{% url 'Product:more-view' query.id %}">Ver mas</a>{% endif %}
                   </p>
+                  <p>Precio: <small>{{query.pdPrice}}</small></p>
                   <div class="shopping-box">
                     <div class="cart">
                       <a
+                        style="display: block;"
                         target="_blank"
                         title="{{query.pdName}}"
-                        href="https://api.whatsapp.com/send/?phone=+573002370341&text=Me interesa comprar este producto {{query.pdName}}, marca: {{query.pdBrand}}. Codigo del producto {{query.pdCode}}"
+                        href="https://api.whatsapp.com/send/?phone=+573002370341&text=Me interesa comprar este producto {{query.pdName}}, marca: {{query.pdBrand}}. Codigo del producto {{query.pdCode}} con un valor de {{query.pdPrice}}"
                       >
-                        <span>Comprar</span>
-                        <i class="fas fa-cart-arrow-down"></i>
+                        <span>Comprar <i class="fas fa-cart-arrow-down"></i></span>
                       </a>
                     </div>
                     <div class="eye">
-                      <a href="{% url 'Product:more-view' query.id %}">
-                        <span>Vista previa</span>
-                        <i class="fas fa-eye"></i>
+                      <a style="display: block;" href="{% url 'Product:more-view' query.id %}">
+                        <span>Vista previa <i class="fas fa-eye"></i></span>
                       </a>
                     </div>
                   </div>

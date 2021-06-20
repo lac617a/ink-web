@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content_main %}
+<div class="mrg-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 position-relative">
+        <div class="maintenance-header">
+          <h2>Mantenimientos Correctivos para computadores</h2>
+        </div>
+        <article class="article-custom">
+          <p>El <strong>mantenimiento correctivo</strong> es aquel que nos permite detectar fallos repetitivos, disminuir los puntos muertos por paradas, aumentar la vida útil de los equipos, disminuir costos de reparaciones a futuro, detectar puntos débiles en la instalación entre una larga lista de ventajas para mantener un equipo en óptimas condiciones.</p>
+          <p><strong style="color: brown;">No somos representantes de ninguna marca aquí estipulada, Somos un servicio que se presta de manera independiente a los canales autorizados</strong></p>
+          <p><small>El <strong>mantenimiento correctivo</strong> trata de una revisión periódica de algunos aspectos determinados de un equipo de computo, tanto de <strong>hardware</strong> como de <strong>software</strong> en un computador, impresora, portátil y/o servidor. Estos aspectos influyen en el desempeño óptimo del sistema, en la integridad de los datos almacenados y en un intercambio de información correcto, a la máxima velocidad posible dentro de la configuración optima del sistema.</small></p>
+          <p><small>Dentro de nuestro servicio de Mantenimientos correctivos para computadores, contamos con personal calificado para realizar mantenimientos a las siguientes marcas:</small></p>
+        </article>
+      </div>
+      <div class="maintenance-header">
+        <h3>Servicios de mantenimiento Correctivo para</h3>
+      </div>
+      <div class="col-lg-12 position-relative">
+        <div class="row">
+          {% for item in qs %}
+          <div class="col-lg-4 col-md-6">
+            <div class="maintenance-pre-corre">
+              <a href="{% url 'Main:correctiveComputerAll' item.name %}">
+                <h5>Mantenimineto correctivos de Computadores {{item.name}}</h5>
+                <div class="load-laz">
+                  <img class="img-fluid" src="{{item.image.url}}" alt="">
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="maintenance-header">
+        <h3>NUESTRA ENCUESTA DE CALIDAD DE SATISFACCIÓN DEL CLIENTE,
+          NOS CERTIFICA COMO LA MEJOR EMPRESA EN SERVICIO DE MANTENIMIENTO.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

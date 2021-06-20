@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(document.getElementById('content-first')){
       loadVideo(winY,_BROWSERHEIGHT);
       formarDateWhatsapp();
-    }else{
-      asidebar(winY,_BROWSERWIDTH)
+    }else if(document.getElementById('cardPd')){
+      // asidebar(winY,_BROWSERWIDTH)
     }
     navbar(winY,_BROWSERWIDTH);
   }

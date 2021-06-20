@@ -1,0 +1,58 @@
+{% extends 'adminPage.html' %}
+{% load static %}
+{% block titulo %}INK | Categoria{% endblock titulo %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/modal.css' %}">
+{% endblock %}
+{% block body %}
+<button class="btn-modal modal-create btn-primary" data-product-url="{% url 'Admin:addBrand' %}" type="button">Crear registro</button>
+
+<table class="table table-responsive">
+  <thead class="bg-dark text-white">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in qs %}
+    <tr>
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.brName}}</td>
+      <td>
+        <button class="btn-modal btn-primary" data-product-url="{% url 'Admin:editBrand' item.id %}" type="button">Editar</button>
+        <a class="btn btn-danger w-100 m-1" href="{% url 'Admin:deleteBrand' item.id %}">Eliminar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!-- RENDER YOU LIST HERE. Now context_object_name must be qs or whatever name you call it-->
+<div class="pagination">
+  {% if qs.has_previous %}
+  <div class="page-link-custom">
+    <a href="?page={{ qs.previous_page_number }}">previous</a>
+  </div>
+  {% endif %}
+  <span class="current">
+    Page {{ qs.number }} of {{ qs.paginator.num_pages }}.
+  </span>
+  {% if qs.has_next %}
+  <div class="page-link-custom">
+    <a href="?page={{ qs.next_page_number }}">next</a>
+  </div>
+  {% endif %}
+</div>
+<div class="modal-container">
+  <div class="modal-custom">
+    <button class="close" type="button"><i class="fas fa-times"></i></button>
+    <div class="modal-text"></div>
+  </div>
+</div>
+{% endblock%}
+{% endblock% }
+{% block extrajs %}
+<script src="{% static 'js/admin.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content_main %}
+<div class="mrg-top">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        {% include 'adminProduct/asidebarAdmin.html' %}
+      </div>
+      <div class="col-lg-9">
+        {% block body %}
+        {% endblock body %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

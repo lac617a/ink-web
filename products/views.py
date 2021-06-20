@@ -61,8 +61,9 @@ class GetCategoryProduView(View):
 
   def get(self,request,slug,*args,**kwargs):
     # SEEKER
+    slug = slug.replace('-',' ')
     seeker = request.GET.get('search')
-    get_state = self.model.objects.filter(pdState=True,pdCategories=Category.objects.get(cgName=slug))
+    get_state = self.model.objects.filter(pdState=True,pdCategories=Category.objects.get(cgName__iexact=slug))
     if seeker:
       get_state = self.model.objects.filter(
         Q(pdName__icontains=seeker) |
@@ -85,6 +86,7 @@ class GetCategoryProduView(View):
 class GetBrandsProduView(GetCategoryProduView):
 
   def get(self,request,slug,*args,**kwargs):
+    slug = slug.replace('-',' ')
     seeker = request.GET.get('search')
     get_state = self.model.objects.filter(pdState=True,pdBrand=Brands.objects.get(brName=slug))
     if seeker:
@@ -105,47 +107,3 @@ class GetBrandsProduView(GetCategoryProduView):
     except EmptyPage:
       paginated = paginator.page(paginator.num_pages)
     return render(request,self.template_name,self.get_context_data(paginate_by,paginated))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def productsHidden(request):
-  get_hide = Products.objects.filter(pdState=False)
-  print(get_hide)
-  return render(request,'products/hide-products.html',{'query':get_hide})
-
-def productDelete(request,id):
-  get_item = get_object_or_404(Products,pk=id)
-  if request.method == 'POST':
-    get_item.delete()
-    return redirect("Main:pro")
-  return render(request,'products/delete-product.html',{'product':get_item})
-
-def productEdit(request,id):
-  pro_form = None
-  error = None
-  try:
-    get_product = Products.objects.get(pk=id)
-    if request.method == 'GET':
-      pro_form = ProductsForm(instance=get_product)
-    else:
-      pro_form = ProductsForm(request.POST,instance=get_product)
-      if pro_form.is_valid():
-        pro_form.save()
-      return redirect('Product:pro')
-  except ObjectDoesNotExist as e:
-    error =  e
-  return render(request,
-  'products/edit-product.html',
-  {'query':pro_form,'error':error})

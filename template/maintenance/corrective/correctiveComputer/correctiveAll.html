@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content_main %}
+<div class="mrg-top">
+  <div class="container">
+    <div class="row">
+      {% if qs %}
+      {% for item in qs %}
+      <div class="col-lg-12 position-relative">
+        <div class="maintenance-header">
+          <h2>Mantenimientos Correctivos para computadores {{item.name}}</h2>
+        </div>
+        <article class="article-custom">
+          <p>El <strong>mantenimiento preventivo</strong> es aquel que nos permite detectar fallos repetitivos, disminuir los puntos muertos por paradas, aumentar la vida útil de los equipos, disminuir costos de reparaciones a futuro, detectar puntos débiles en la instalación entre una larga lista de ventajas para mantener un equipo en óptimas condiciones.</p>
+          <p><strong style="color: brown;">No somos representantes de ninguna marca aquí estipulada, Somos un servicio que se presta de manera independiente a los canales autorizados</strong></p>
+        </article>
+      </div>
+      <div class="col-lg-12 position-relative">
+        <div class="maintenance-header">
+          <h3>Servicios de mantenimiento correctivo para {{item.name}}</h3>
+        </div>
+        <article class="article-custom">
+          <p><small>Servicio especializado en mantenimiento preventivo de computadores {{item.name}}, restauración de computadores {{item.name}} en Bucaramanga Colombia.</small></p>
+          <p>Prestamos el servicio de Mantenimiento Preventivo Computadores {{item.name}} mediante el esquema de contratos anuales con visitas programadas o eventos puntuales; Dentro de nuestro servicio de mantenimientos preventivos {{item.name}}, desarrollamos las siguientes actividades:</p>
+          <ol class="list-group list-group-numbered">
+            <li class="list-group-item"><strong><span>Diagnostico del computador para un óptimo servicio de Mantenimiento Correctivo.</span></strong>.</li>
+            <li class="list-group-item"><strong><span>Corrección de daños tanto en el hardware, como en el software.</span></strong></li>
+            <li class="list-group-item"><strong><span>Limpieza de software. (Virus, troyanos, software espía).</span></strong></li>
+            <li class="list-group-item"><strong><span>Eliminación de los errores de programación de seguridad (Bug).</span></strong></li>
+            <li class="list-group-item"><strong><span>Reparación o sustitución del hardware.</span></strong></li>
+            <li class="list-group-item"><strong><span>Detección de fallos en discos duros, memoria, tarjetas de video, Boards, entre otros</span></strong></li>
+          </ol>
+          <p style="margin: .5rem 0;">Los mejores en el país en mantenimientos preventivos de computadores {{item.name}}, por calidad, rapidez, y cumplimiento manteniendo estándares de calidad que nos reconoce como una de los mejores en el servicio.</p>
+        </article>
+      </div>
+      <div class="maintenance-header">
+        <h3>NUESTRA ENCUESTA DE CALIDAD DE SATISFACCIÓN DEL CLIENTE,
+          NOS CERTIFICA COMO LA MEJOR EMPRESA EN SERVICIO DE MANTENIMIENTO.</h3>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

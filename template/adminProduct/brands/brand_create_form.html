@@ -1,0 +1,11 @@
+<div class="container mt-3 mb-3">
+  <div class="row">
+    <h3 class="modal-title">Agregar Marca</h3>
+    <form id="form-control-all" action="{% url 'Admin:addBrand' %}" role="form" method="POST">
+      {% csrf_token %}
+      {{form.as_p}}
+      <button class="btn btn-danger mb-3" type="reset">Cancelar</button>
+      <button class="btn btn-primary mb-3" type="submit">Confirmar</button>
+    </form>
+  </div>
+</div>

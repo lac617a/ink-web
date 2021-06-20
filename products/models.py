@@ -14,6 +14,7 @@ class Category(models.Model):
     return self.cgName
 
   class Meta:
+    ordering = ['-id']
     verbose_name = 'Categoria'
     verbose_name_plural = 'Categorias'
 
@@ -27,6 +28,7 @@ class Brands(models.Model):
     return self.brName
 
   class Meta:
+    ordering = ['-id']
     verbose_name = 'Marca'
     verbose_name_plural = 'Marcas'
 

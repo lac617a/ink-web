@@ -1,0 +1,18 @@
+{% extends 'adminPage.html' %}
+{% block titulo %}INK | Eliminar Marca{% endblock titulo %}
+{% block body %}
+<div class="row vh-100">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8 pt-5">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="alert alert-danger" role="alert">
+        Estas usted realmente seguro de eliminar esta Marca de su listado?
+        <p>Se eliminara {{object.brName}}</p>
+      </div>
+      <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+    {% endblock %}
+  </div>
+  <div class="col-lg-2"></div>
+</div>

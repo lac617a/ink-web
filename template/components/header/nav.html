@@ -37,9 +37,17 @@
     </div>
     {% if request.user.is_authenticated and request.user.is_superuser %}
     <li class="item-custom">
-      <a class="link-custom" href="{% url 'Admin:list-products' %}">
+      <a class="link-custom" href="{% url 'Admin:listProducts' %}">
         <div class="box-sidebar">
           <span>Administrador</span>
+          <i class="fas fa-users"></i>
+        </div>
+      </a>
+    </li>
+    <li class="item-custom">
+      <a class="link-custom" href="{% url 'logoutUser' %}">
+        <div class="box-sidebar">
+          <span>Salir</span>
           <i class="fas fa-users"></i>
         </div>
       </a>

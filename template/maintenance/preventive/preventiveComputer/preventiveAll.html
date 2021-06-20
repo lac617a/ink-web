@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content_main %}
+<div class="mrg-top">
+  <div class="container">
+    <div class="row">
+      {% if qs %}
+      {% for item in qs %}
+      <div class="col-lg-12 position-relative">
+        <div class="maintenance-header">
+          <h2>Mantenimientos Preventivos para computadores {{item.name}}</h2>
+        </div>
+        <article class="article-custom">
+          <p>El <strong>mantenimiento preventivo</strong> es aquel que nos permite detectar fallos repetitivos, disminuir los puntos muertos por paradas, aumentar la vida útil de los equipos, disminuir costos de reparaciones a futuro, detectar puntos débiles en la instalación entre una larga lista de ventajas para mantener un equipo en óptimas condiciones.</p>
+          <p><strong style="color: brown;">No somos representantes de ninguna marca aquí estipulada, Somos un servicio que se presta de manera independiente a los canales autorizados</strong></p>
+        </article>
+      </div>
+      <div class="col-lg-12 position-relative">
+        <div class="maintenance-header">
+          <h3>Servicios de mantenimiento preventivo para {{item.name}}</h3>
+        </div>
+        <article class="article-custom">
+          <p><small>Servicio especializado en mantenimiento preventivo de computadores {{item.name}}, restauración de computadores {{item.name}} en Bucaramanga Colombia.</small></p>
+          <p>Prestamos el servicio de Mantenimiento Preventivo Computadores {{item.name}} mediante el esquema de contratos anuales con visitas programadas o eventos puntuales; Dentro de nuestro servicio de mantenimientos preventivos {{item.name}}, desarrollamos las siguientes actividades:</p>
+          <ol class="list-group list-group-numbered">
+            <li class="list-group-item bg-dark text-white"><strong>Mantenimiento preventivo</strong> del Sistema.
+              <ol class="list-group list-group-numbered">
+                <li class="list-group-item">Eliminación de archivos temporales (internet, Programas y de Sistema).</li>
+                <li class="list-group-item">Desinstalar programas innecesarios que afectan al rendimiento del Sistema Operativo.</li>
+                <li class="list-group-item">Desactivar programas de inicio cuando se prende la computadora.</li>
+                <li class="list-group-item">Utilidad de Des-fragmentación del Disco Duro.</li>
+                <li class="list-group-item">Comprobar los errores en el disco duro.</li>
+                <li class="list-group-item">Reparar los archivos del sistema.</li>
+              </ol>
+            </li>
+            <li class="list-group-item bg-dark text-white"><strong>Mantenimiento preventivo</strong> de Limpieza.
+              <ol class="list-group list-group-numbered">
+                <li class="list-group-item">Preventivo Sopleteado en todas sus partes electrónicas: Fuente de Poder, Procesador, DiscoDuro.</li>
+                <li class="list-group-item">Preventivo Limpieza con espuma limpiadora especial en: Gabinete, Unidad de CD, Floppy y otros.</li>
+              </ol>
+            </li>
+            <li class="list-group-item bg-dark text-white">El <strong>Mantenimiento preventivo</strong> a computadores escritorio {{item.name}}, Incluye también:
+              <ol class="list-group list-group-numbered">
+                <li class="list-group-item">Incluye Diagnostico Software y Hardware.</li>
+                <li class="list-group-item">Cotización para actualización en Procesador, Memoria, Disco Duro y Unidades de CD o DVD.</li>
+              </ol>
+            </li>
+          </ol>
+          <p style="margin: .5rem 0;">Los mejores en el país en mantenimientos preventivos de computadores {{item.name}}, por calidad, rapidez, y cumplimiento manteniendo estándares de calidad que nos reconoce como una de los mejores en el servicio.</p>
+        </article>
+      </div>
+      <div class="maintenance-header">
+        <h3>NUESTRA ENCUESTA DE CALIDAD DE SATISFACCIÓN DEL CLIENTE,
+          NOS CERTIFICA COMO LA MEJOR EMPRESA EN SERVICIO DE MANTENIMIENTO.</h3>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,32 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content_main %}
 <div class="mrg-top vh-100">
-  <div class="container">
+  <div class="container pt-3">
     <div class="row row-custom">
-      <div class="col-lg-6"></div>
-      <div class="col-lg-6">
-        <form method="POST">
-          {% csrf_token %}
-          <div class="form-group">
-            {% if request.method == "POST" %}
-            {% if form.error_messages %}
-            <div class="alert alert-danger alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <strong>Advertencia: </strong> {{ form.get_invalid_login_error|join:'' }}
+      <div class="col-lg-6 bg-dark">
+        <img style="width: 100%; padding: 5rem;" src="{% static 'img/logo.png' %}" alt="">
+      </div>
+      <div class="col-lg-6 p-0">
+        <div class="box-login-main">
+          <form method="POST" class="p-2 w-100">
+            {% csrf_token %}
+            <div class="form-group">
+              {% if request.method == "POST" %}
+              {% if form.error_messages %}
+              <div class="alert alert-danger alert-dismissible" data-bs-dismiss="alert" role="alert">
+                <button type="button" class="btn btn-close" data-dismiss="alert" aria-label="Close"></button>
+                <strong>Advertencia: </strong> {{ form.get_invalid_login_error|join:'' }}
+              </div>
+              {% endif %}
+              {% endif %}
+              <label class="form-label">Nombre de usuario</label>
+              {{ form.username }}
             </div>
-            {% endif %}
-            {% endif %}
-            <label class="form-label">Nombre de usuario</label>
-            {{ form.username }}
-          </div>
-          <div class="form-group">
-            <label class="form-label">Contraseña</label>
-            {{ form.password }}
-          </div>
-          <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Iniciar Sesión</button>
-        </form>
+            <div class="form-group">
+              <label class="form-label">Contraseña</label>
+              {{ form.password }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-flat mb-3 mt-3 w-100">Iniciar Sesión</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

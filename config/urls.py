@@ -20,12 +20,13 @@ from django.conf.urls.static import static
 from authentication.views import Login, logoutUser
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #! CAMBIARLE EL NOMBRE DE ADMIN A :D
     path('',include('core.urls')),
     path('products/',include('products.urls')),
     path('productsAdmin/',include('products.urls_admin')),
     path('accounts/login/',Login.as_view(),name="loginUser"),
     path('logout/',logoutUser,name="logoutUser"),
+    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:

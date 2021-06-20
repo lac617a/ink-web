@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content_main %}
+<div class="mrg-top">
+  <div class="container">
+    <div class="row">
+      {% block maintenance %}
+      <div class="col-lg-12 position-relative">
+        <div class="maintenance-header">
+          <h2>Mantenimientos Correctivos</h2>
+        </div>
+        <article class="article-custom">
+          <p>El <strong>mantenimiento correctivo</strong> es el proceso mediante el cual se realizan las correcciones de las averías o fallas, de un equipo de computo, cuando éstas se presentan. Un <strong>mantenimiento correctivo</strong> trata de todas las actividades de mantenimiento orientadas hacia la restitución de las características de funcionamiento de un equipo o sistema después de ocurrida la falla.</p>
+          <p><strong style="color: brown;">No somos representantes de ninguna marca aquí estipulada, Somos un servicio que se presta de manera independiente a los canales autorizados</strong></p>
+          <p><small>Generalmente estas fallas generan retrasos en la productividad de una organización, y por consecuencia pérdidas para la empresa en general. Los costos de un <strong>mantenimiento correctivo</strong> son originados cuando el equipo falla o no puede ser operado a un costo razonable; Más sin embargo el costo de un <strong>mantenimiento correctivo</strong> puede ser impredecible, por que no siempre se tiene certeza de cual es la falla exacta, por tal motivo siempre se realiza un diagnostico para detectar el posible daño.</small></p>
+          <p><small>El <strong>mantenimiento Correctivo</strong> de un equipo informático se realiza con el objetivo de solucionar fallas operativas de software o hardware; cambio o instalación de nuevos componentes de hardware y cuando la presencia de un Virus afecta el desempeño de la computadora; A diferencia del mantenimiento preventivo, el correctivo se realiza cuando la maquina se encuentra presentando fallos en un momento determinado, es decir que un correctivo es una solución en tiempo real del problema, su objetivo no es prevenir sino brindar una solución a tiempo.</small></p>
+        </article>
+      </div>
+      <div class="maintenance-header">
+        <h3>Servicios de mantenimiento Correctivos para</h3>
+      </div>
+      <div class="col-lg-12 position-relative">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-6">
+            <div class="maintenance-pre-corre">
+              <a href="{% url 'Main:correctiveComputer' %}">
+                <h5>Correctivos Computadores</h5>
+                <div class="load-laz">
+                  <img class="img-fluid" src="{% static 'img/computer.jpg' %}" alt="">
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6">
+            <div class="maintenance-pre-corre">
+              <a href="{% url 'Main:correctivePrinter' %}">
+                <h5>Correctivos Impresoras</h5>
+                <div class="load-laz">
+                  <img class="img-fluid" src="{% static 'img/printer.jpg' %}" alt="">
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 position-relative">
+        <div class="maintenance-header">
+          <h4><strong>Daños a reparar en un mantenimiento correctivo</strong></h4>
+        </div>
+        <article class="article-custom">
+          <p>Los daños que un mantenimiento correctivo puede reparar son los siguientes:</p>
+          <ol class="list-group list-group-numbered">
+            <li class="list-group-item">Corrección de daños tanto en el hardware, como en el software.</li>
+            <li class="list-group-item">Reinstalación de los sistemas operativos.</li>
+            <li class="list-group-item">Limpieza de software. (Virus, troyanos, software espía).</li>
+            <li class="list-group-item">Eliminación de los errores de programación de seguridad (Bug).</li>
+            <li class="list-group-item">Reparación o sustitución del hardware.</li>
+            <li class="list-group-item">Detección de fallos en discos duros, memoria, tarjetas de video, Boards, entre otros.</li>
+          </ol>
+        </article>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}

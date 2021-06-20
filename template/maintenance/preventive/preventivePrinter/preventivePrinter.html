@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content_main %}
+<div class="mrg-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 position-relative">
+        <div class="maintenance-header">
+          <h2>Mantenimientos Preventivos para Impresoras</h2>
+        </div>
+        <article class="article-custom">
+          <p>El <strong>mantenimiento preventivo</strong> es aquel que nos permite detectar fallos repetitivos, disminuir los puntos muertos por paradas, aumentar la vida útil de los equipos, disminuir costos de reparaciones a futuro, detectar puntos débiles en la instalación entre una larga lista de ventajas para mantener un equipo en óptimas condiciones.</p>
+          <p><strong style="color: brown;">No somos representantes de ninguna marca aquí estipulada, Somos un servicio que se presta de manera independiente a los canales autorizados</strong></p>
+          <p><small>El <strong>mantenimiento preventivo</strong> trata de una revisión periódica de algunos aspectos determinados de un equipo de computo, tanto de <strong>hardware</strong> como de <strong>software</strong> en un computador, impresora, portátil y/o servidor. Estos aspectos influyen en el desempeño óptimo del sistema, en la integridad de los datos almacenados y en un intercambio de información correcto, a la máxima velocidad posible dentro de la configuración optima del sistema.</small></p>
+          <p><small>Dentro de nuestro servicio de Mantenimientos preventivos para Impresoras, contamos con personal calificado para realizar mantenimientos a las siguientes marcas:</small></p>
+        </article>
+      </div>
+      <div class="maintenance-header">
+        <h3>Servicios de mantenimiento preventivo para</h3>
+      </div>
+      <div class="col-lg-12">
+        <div class="row justify-content-center">
+          {% for item in qs %}
+          <div class="col-lg-5 col-md-6">
+            <div class="maintenance-pre-corre">
+              <a href="{% url 'Main:preventiveAllPrinter' item.name %}">
+                <h5>Mantenimineto Preventivos de Impresoras {{item.name}}</h5>
+                <div class="load-laz">
+                  <img class="img-fluid" src="{{item.image.url}}" alt="">
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-12 position-relative">
+        <div class="maintenance-header">
+          <h3>Importante para el mantenimiento de una impresora</h3>
+        </div>
+        <article class="article-custom">
+          <p>El <strong>mantenimiento preventivo</strong> de una <strong>impresora</strong> generalmente puede detener los problemas a futuro de su maquina, antes de que empiecen. Prestamos el servicio de <strong>Mantenimiento Preventivo</strong> de Impresoras {{item.name}} mediante el esquema de contratos anuales con visitas programadas o eventos puntuales; Dentro de nuestro servicio de mantenimientos preventivos de Impresoras {{item.name}}, desarrollamos las siguientes actividades:</p>
+          <p><small><strong>Importante para el mantenimiento de una impresora</strong></small></p>
+          <p>Con una <strong>impresora</strong> todo en uno que cuenta con la capacidad de imprimir, escanear, copiar y a veces hasta de enviar fax, preste atención a los signos que revelen la necesidad de efectuar una limpieza. Por ejemplo, si nota que hay tinta, polvo o suciedad, o si adviertes manchas o marcas de tinta en tus documentos, es hora de realizar un <strong>mantenimiento</strong> de la impresora.</p>
+          <ol class="list-group list-group-numbered">
+            <li class="list-group-item bg-dark text-white"><strong>Impresora absolutamente libre de manchas.</strong>
+              <ol class="list-group list-group-numbered">
+                <li class="list-group-item">
+                  <span>En general, una impresora requiere muy poco mantenimiento. Pero una limpieza periódica mejorará su apariencia y evitará futuros problemas de impresión. Adquiere el hábito de limpiar la parte externa de la impresora al cambiar el cartucho de tinta. Es aconsejable limpiar con un paño húmedo, sin dejar entrar la humedad al interior de la impresora. Utilizar una brocha suave o una aspiradora para computadora para extraer las hilachas y el polvo del camino del papel, en caso de que sea necesario.</span>
+                </li>
+              </ol>
+            </li>
+            <li class="list-group-item bg-dark text-white"><strong>Limpieza de Cartuchos.</strong>
+              <ol class="list-group list-group-numbered">
+                <li class="list-group-item"><span>La limpieza de los propios cartuchos de inyección de tinta, mejoran el rendimiento de la impresora al corregir las líneas o puntos faltantes y eliminar las rayas en el papel.</span></li>
+              </ol>
+            </li>
+            <li class="list-group-item bg-dark text-white"><strong>Limpieza del Escáner.</strong>
+              <ol class="list-group list-group-numbered">
+                <li class="list-group-item"><span>El escáner debe limpiarse y recalibrarse si existen líneas blancas o negras a lo largo de las copias, faxes enviados o documentos escaneados.</span></li>
+              </ol>
+            </li>
+          </ol>
+          <p style="margin: .5rem 0;">Los mejores en el país en mantenimientos preventivos de computadores {{item.name}}, por calidad, rapidez, y cumplimiento manteniendo estándares de calidad que nos reconoce como una de los mejores en el servicio.</p>
+        </article>
+      </div>
+      <div class="maintenance-header">
+        <h3>NUESTRA ENCUESTA DE CALIDAD DE SATISFACCIÓN DEL CLIENTE,
+          NOS CERTIFICA COMO LA MEJOR EMPRESA EN SERVICIO DE MANTENIMIENTO.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

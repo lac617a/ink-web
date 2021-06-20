@@ -64,9 +64,11 @@
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6">
       <article class="st-service-card">
-        <img loading="lazy" width="50" height="50" src="{% static 'img/mantenimiento.svg' %}" alt="">
-        <h2 class="f5">Mantenimiento correctivo y preventivo</h2>
-        <p class="lh-copy">Es recomendable realizar de manera periódica un servicio técnico de limpieza profunda y revisión de funcionamiento a todos los equipos de cómputo para alargar su vida útil y detectar problemas a tiempo.</p>
+        <a style="color: #111;" href="{% url 'Main:maintenance' %}">
+          <img loading="lazy" width="50" height="50" src="{% static 'img/mantenimiento.svg' %}" alt="">
+          <h2 class="f5">Mantenimiento correctivo y preventivo</h2>
+          <p class="lh-copy">Es recomendable realizar de manera periódica un servicio técnico de limpieza profunda y revisión de funcionamiento a todos los equipos de cómputo para alargar su vida útil y detectar problemas a tiempo.</p>
+        </a>
       </article>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6">

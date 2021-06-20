@@ -20,7 +20,7 @@
               <div class="card-product">
                 <div class="wrapper-component">
                   {% if request.user.is_authenticated and request.user.is_superuser %}
-                  <a href="{% url 'Admin:delete-products' query.id %}"><i class="far fa-trash-alt" style="color: #EE4072;"></i></a>
+                  <a href="{% url 'Admin:deleteProducts' query.id %}"><i class="far fa-trash-alt" style="color: #EE4072;"></i></a>
                   {% endif %}
                 </div>
                 <div class="card-header-product">
@@ -37,11 +37,12 @@
                     {{query.pdDescription|truncatechars_html:50|safe|striptags}}
                     {% if query.pdDescription|length >= 50 %}<a href="{% url 'Product:more-view' query.id %}">Ver mas</a>{% endif %}
                   </p>
+                  <p>Precio: <small>{{query.pdPrice}}</small></p>
                   <div class="shopping-box">
                     <div class="cart">
                       <a
                         target="_blank"
-                        title="{{query.pdName}}" href="https://api.whatsapp.com/send/?phone=+573002370341&text=Me interesa comprar este producto {{query.pdName}}, marca: {{query.pdBrand}}. Codigo del producto {{query.pdCode}}"
+                        title="{{query.pdName}}" href="https://api.whatsapp.com/send/?phone=+573002370341&text=Me interesa comprar este producto {{query.pdName}}, marca: {{query.pdBrand}}. Codigo del producto {{query.pdCode}} con un valor de {{query.pdPrice}}"
                       >
                         <span>Comprar</span>
                         <i class="fas fa-cart-arrow-down"></i>
@@ -90,7 +91,7 @@
                   <p>Lo sentimos, pero el producto que estas buscando no se encuentra, o esta mal escrito.</p>
                   <p>Por favor intentelo de nuevo. Gracias.</p>
                 </div>
-                <div class="alert-footer"><a class="btn btn-primary" href="{% url 'Product:list-products' %}">Seguir viendo <strong>productos</strong></a></div>
+                <div class="alert-footer"><a class="btn btn-primary" href="{% url 'Product:listProducts' %}">Seguir viendo <strong>productos</strong></a></div>
               </div>
             </div>
           </div>
