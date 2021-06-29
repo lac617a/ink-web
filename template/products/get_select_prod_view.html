@@ -35,7 +35,7 @@
                   <h4>{{query.pdName}}</h4>
                   <p>
                     {{query.pdDescription|truncatechars_html:50|safe|striptags}}
-                    {% if query.pdDescription|length >= 50 %}<a href="{% url 'Product:more-view' query.id %}">Ver mas</a>{% endif %}
+                    {% if query.pdDescription|length >= 50 %}<a href="{% url 'Product:more-view' query.pdName|slugify %}">Ver mas</a>{% endif %}
                   </p>
                   <p>Precio: <small>{{query.pdPrice}}</small></p>
                   <div class="shopping-box">
