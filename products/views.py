@@ -99,6 +99,8 @@ class GetCategoryProduView(View):
     return render(request,self.template_name,self.get_context_data(paginate_by,paginated))
 
 class GetBrandsProduView(GetCategoryProduView):
+  model = Products
+  template_name = 'products/get_select_prod_view.html'
 
   def get(self,request,slug,*args,**kwargs):
     slug = slug.replace('-',' ')
