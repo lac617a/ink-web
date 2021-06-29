@@ -2,7 +2,8 @@ from django.shortcuts import redirect,render
 from django.urls import reverse_lazy
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.views.generic.edit import CreateView, DeleteView,UpdateView
-from django.views.generic import View
+from django.views.generic import View,ListView
+from django.db.models import Q
 from .models import Category, Products,Brands
 from .forms import CategoryForm, ProductsForm,BrandForm
 
@@ -11,19 +12,28 @@ class ListProdViewAdmin(View):
   paginate_by = 10
   template_name = 'adminProduct/products/lists-products.html'
 
-  def get_queryset(self):
-    return self.model.objects.filter(pdState=True)
+  def get_queryset(self,seeker=None):
+    queryset = self.model.objects.filter(pdState=True)
+    if seeker is not None:
+      queryset = self.model.objects.filter(
+        Q(pdName__icontains=seeker) |
+        Q(pdCode__contains=seeker),
+        pdState=True
+      ).distinct()
+    return queryset
 
   def get_context_data(self,*args,**kwargs):
     context = {}
     context['paginate_by'] = args[0]
     context['qs'] = args[1]
+    context['total_products'] = self.get_queryset().count()
     return context
   
   def get(self,request,*args,**kwargs):
-    count = 10
-    paginate_by = request.GET.get('paginate_by',count) or count
-    paginator = Paginator(self.get_queryset(),paginate_by)
+    COUNT = 10
+    searchCode = request.GET.get('searchCode')
+    paginate_by = request.GET.get('paginate_by',COUNT) or COUNT
+    paginator = Paginator(self.get_queryset(searchCode),paginate_by)
     page = request.GET.get('page')
     try:
       paginated = paginator.get_page(page)
@@ -65,7 +75,6 @@ class UpdateProdViewAdmin(UpdateView):
 
 class DeleteProdViewAdmin(DeleteView):
   model = Products
-
   def post(self,request,pk,*args,**kwargs):
     object = self.model.objects.get(pk=pk)
     object.pdState = False
@@ -82,7 +91,7 @@ class ListCategoryView(ListProdViewAdmin):
   form_class = CategoryForm
   template_name = 'adminProduct/category/list-category.html'
 
-  def get_queryset(self):
+  def get_queryset(self,seeker=None):
     return self.model.objects.all()
 
 class UpdateCategoryView(UpdateView):
@@ -110,9 +119,8 @@ class ListBrandView(ListProdViewAdmin):
   form_class = BrandForm
   template_name = 'adminProduct/brands/list-brand.html'
 
-  def get_queryset(self):
+  def get_queryset(self,seeker=None):
     return self.model.objects.all()
-
 class UpdateBrandView(UpdateView):
   model = Brands
   template_name = 'adminProduct/brands/edit-brand.html'

@@ -18,7 +18,7 @@ class ProductsForm(forms.ModelForm):
     widgets = {
       'pdCode':forms.NumberInput(attrs={'class':'form-control'}),
       'pdName':forms.TextInput(attrs={'class':'form-control'}),
-      'pdPrice':forms.NumberInput(attrs={'class':'form-control'}),
+      'pdPrice':forms.TextInput(attrs={'class':'form-control'}),
       'pdBrand':forms.Select(attrs={'class':'form-select'}),
       'pdCategories':forms.Select(attrs={'class':'form-select'}),
       'pdDescription':forms.Textarea(attrs={'class':'form-control w-100'}),

@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ["localhost","127.0.0.1","ink-dye.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost","127.0.0.1","ink-dye.herokuapp.com","ink-dye.com","www.ink-dye.com"]
 
 
 # Application definition
@@ -94,13 +94,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+from . import db
+DATABASES = db.DATABASES_ENV
 
 
 # Password validation
@@ -147,20 +142,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+# if DEBUG:
+#     MEDIA_URL = '/media/'
+#     MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = config('USER')
-EMAIL_HOST_PASSWORD = config('PASSWORD')
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
 
 # whitenoise 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+##### MODE PRODUCTION ######
+if config('DJANGO_PRO_ENV',default=False,cast=bool):
+    from .settings_production import *

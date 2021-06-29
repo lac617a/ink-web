@@ -16,24 +16,30 @@
       <div class="col-lg-9">
         <div class="vh-100" role="alert">
           <div class="row shadow p-3 mb-5 mt-5 bg-body rounded">
+            {% if object is not None %}
             <div class="col-lg-6">
               <div class="loading-lazy">
                 <img src="{{object.get_image_url}}" loading="lazy" class="img-fluid" alt="{{object.pdName}}">
                 <div class="text-float"><h3>{{object.pdName}}</h3></div>
               </div>
               <div class="box-footer-more-view">
-                <!-- <div class="box-stock"><h4>En stock: <span class="box-more">{{object.pdStock}}</span></h4></div> -->
-                <div class="box-category"><h4>Categoria: <span class="box-more">{{object.pdCategories}}</span></h4></div>
-                <div class="box-brand"><h4>Marca: <span class="box-more">{{object.pdBrand}}</span></h4></div>
+                <small>Precio:</small>
                 {% if object.pdPrice %}
-                <p>Precio: <small>{{object.pdPrice}}</small></p>
+                <h2>$ <small>{{object.pdPrice}}</small></h2>
                 {% else %}
-                <p>Este producto no cuenta con un precio oficial, Por favor comuniquese directamente con nosotros.
-                  <a 
-                    target="_blank"
-                    title="{{object.pdName}}" href="https://api.whatsapp.com/send/?phone=+573002370341&text=Hola, Me interesaria saber el precio de este producto: {{object.pdName}}, marca: {{object.pdBrand}}. Codigo del producto {{object.pdCode}}"
-                  >
-                </p>
+                <div class="shopping-box">
+                  <div class="cart">
+                    <p>Este producto no cuenta con un precio oficial, Por favor comuniquese directamente con nosotros.
+                      <a 
+                        target="_blank"
+                        title="{{object.pdName}}" href="https://api.whatsapp.com/send/?phone=+573002370341&text=Hola, Me interesaria saber el precio de este producto: {{object.pdName}}, marca: {{object.pdBrand}}. Codigo del producto {{object.pdCode}}"
+                      >
+                      <span>Consultar</span>
+                      <i class="fas fa-cart-arrow-down"></i>
+                      </a>
+                    </p>
+                  </div>
+                </div>
                 {% endif %}
               </div>
             </div>
@@ -51,7 +57,8 @@
                 <div class="cart">
                   <a 
                     target="_blank"
-                    title="{{object.pdName}}" href="https://api.whatsapp.com/send/?phone=+573002370341&text=Me interesa comprar este producto {{object.pdName}}, marca: {{object.pdBrand}}. Codigo del producto {{object.pdCode}}"
+                    title="{{object.pdName}}"
+                    href="https://api.whatsapp.com/send/?phone=+573002370341&text=Me interesa comprar este producto {{object.pdName}}, marca: {{object.pdBrand}}. Codigo del producto {{object.pdCode}} con un valor de {{object.pdPrice}}"
                   >
                     <span>Comprar</span>
                     <i class="fas fa-cart-arrow-down"></i>
@@ -59,6 +66,14 @@
                 </div>
               </div>
             </div>
+            {% else %}
+            <div class="col-lg-12">
+              <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Error!</h4>
+                <p>Al parecer a ocurrido un error interno al intentar capturar el producto seleccionado, este producto se encuentra eliminado, o ya no se encuentra disponible, si necesitas mas ayuda por favor comuniquese con nosotros <a href="/#contact">Aqui</a>.</p>
+              </div>
+            </div>
+            {% endif %}
           </div>
         </div>
       </div>

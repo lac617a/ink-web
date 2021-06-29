@@ -1,10 +1,9 @@
-from django.shortcuts import render,redirect,get_object_or_404
-from django.core.exceptions import ObjectDoesNotExist
-from django.views.generic import View,DetailView
+from django.http.response import Http404
+from django.shortcuts import render
+from django.views.generic import View
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Brands, Category, Products
-from .forms import ProductsForm
 
 # Create your views here.
 
@@ -45,9 +44,25 @@ class ListProdView(View):
   def post(self,request,*args,**kwargs):
     pass
 
-class MoreViewDetailProd(DetailView):
+class MoreViewDetailProd(View):
   model = Products
   template_name = 'products/more_view.html'
+
+  def get_context_data(*args,**kwargs):
+    context = {}
+    context['object'] = args[1]
+    context['error'] = args[2]
+    return context
+
+  def get(self,request,slug,*args,**kwargs):
+    slug = slug.replace('-',' ')
+    queryset = None
+    error = None
+    if slug:
+      queryset = self.model.objects.filter(pdState=True).get(pdName__iexact=slug)
+    else:
+      error = 'A ocurrido un error, al parecer ese objeto a sido eliminado o no se encuentra disponible'
+    return render(request,self.template_name,self.get_context_data(queryset,error))
 
 class GetCategoryProduView(View):
   model = Products
@@ -71,7 +86,7 @@ class GetCategoryProduView(View):
         pdState=True,pdCategories=Category.objects.get(cgName=slug)
       ).distinct()
     
-    count = 9
+    count = 10
     paginate_by = request.GET.get('paginate_by',count) or count
     paginator = Paginator(get_state,paginate_by)
     page = request.GET.get('page')
@@ -96,7 +111,7 @@ class GetBrandsProduView(GetCategoryProduView):
         pdState=True,pdBrand=Brands.objects.get(brName=slug)
       ).distinct()
     
-    count = 9
+    count = 10
     paginate_by = request.GET.get('paginate_by',count) or count
     paginator = Paginator(get_state,paginate_by)
     page = request.GET.get('page')

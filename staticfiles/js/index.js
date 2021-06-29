@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const winY = window.pageYOffset;
     scroll_up(winY,_BROWSERHEIGHT);
     if(document.getElementById('content-first')){
-      loadVideo(winY,_BROWSERHEIGHT);
+      // loadVideo(winY,_BROWSERHEIGHT);
       formarDateWhatsapp();
     }else if(document.getElementById('cardPd')){
       // asidebar(winY,_BROWSERWIDTH)
@@ -32,7 +32,8 @@ function asidebar(winY,wid){
 const btn = document.querySelectorAll('.wrapper-header-res ._private')
 btn.forEach(item =>{
   item.addEventListener('click',()=>{
-    const search = document.querySelector('.search')
+    const search = document.querySelector('.wrapper-header-res .search')
+    console.log(search)
     const navbar = document.querySelector('.wrapper-nav-bar')
     if(item.classList.item(0) == 'seeker'){
       search.classList.toggle('active')

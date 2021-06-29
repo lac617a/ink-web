@@ -6,10 +6,10 @@
 <link rel="stylesheet" href="{% static 'css/modal.css' %}">
 {% endblock %}
 {% block body %}
-<button class="btn-modal modal-create btn-primary" data-product-url="{% url 'Admin:addBrand' %}" type="button">Crear registro</button>
+<button class="btn-modal modal-create btn-primary" style="margin: 1rem 0;" data-product-url="{% url 'Admin:addBrand' %}" type="button">Crear registro</button>
 
 <table class="table table-responsive">
-  <thead class="bg-dark text-white">
+  <thead class="text-white" style="background-color: #111;">
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Nombre</th>

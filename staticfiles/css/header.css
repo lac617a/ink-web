@@ -11,6 +11,8 @@
   background-color: #1113;
   justify-content: space-between;
   transition: all linear .3s;
+  height: 50px;
+  background-color: #376efd;
 }
 .header-logo{position: relative;}
 #header-main{
@@ -20,18 +22,23 @@
   left: 0;
   right: 0;
 }
+th{
+  font-weight: normal !important;
+}
 #header-main .wrapper-header.activa{
   background-color: #111;
   box-shadow:0 0 10px 1px rgba(0,0,0,.5);
 }
+.navbar-custom{height: 100%;}
 .header-nav{
   background-image: url(../img/nav-bar.png);
   background-position: right bottom;
 }
 .wrapper-header .header-logo .logo{
   display: block;
-  height: 80px;
-  width: 150px;
+  margin-top: .5rem;
+  height: 100%;
+  width: 100px;
 }
 .wrapper-header .header-logo .logo img{
   padding: .5rem;
@@ -46,7 +53,7 @@
 .box-sidebar{
   text-align: center;
   padding: 0 .5rem;
-  font-size: 14px;
+  font-size: 12px;
 }.box-sidebar .fas{
   align-items: center;
   color: #efefef;
@@ -102,7 +109,7 @@
 #main-button{
   position: relative;
   z-index: 100;
-  padding-top: 1.5rem;
+  align-items: center;
 }
 #hamburger button{
   background: none;
@@ -144,7 +151,7 @@
   .wrapper-header-res{display: flex;}
 }
 @media only screen and (max-width:768px){
-  .wrapper-header .header-logo .logo img{margin-top: .4rem;}
+  /* .wrapper-header .header-logo .logo img{margin-top: .4rem;} */
   .navbar-custom{
     position: fixed;
     z-index: 100;
@@ -163,6 +170,7 @@
     padding-top: 7rem !important;
     background-color: #111;
     height: 100vh;
+    overflow: auto;
   }
   .navbar-custom .nav-custom .item-custom{
     position: relative;
@@ -193,14 +201,16 @@
     color: #efefef;
     background-color: transparent;
   }
-  #main-button{display: block;}
+  #main-button{display: flex;}
 }
 /*! STOP */
 @media only screen and (min-width:769px){
-  .wrapper-header .header-logo .logo img{margin-top: .9rem;}
+  /* .wrapper-header .header-logo .logo img{margin-top: .9rem;} */
   .navbar-custom .nav-custom{
     display: flex;
-    padding: 1.5rem !important;
+    align-items: center;
+    /* padding: 1.5rem !important; */
+    height: 100%;
   }
   .navbar-custom .nav-custom .item-custom{
     margin: 0 .5rem;

@@ -54,6 +54,11 @@
   overflow: hidden;
   width: 300px;
 }
+.total-products{
+  font-size: 30px;
+  padding: .2rem;
+  margin-top: 1rem;
+}
 .card-header-product{
   overflow: hidden;
   height: 200px;
@@ -93,12 +98,11 @@
 .tag{
   background-color: #cccccc;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: 10px;
   margin: 0;
   color: #fff;
   padding: 2px 10px;
   text-transform: uppercase;
-  cursor: pointer;
 }
 .tag-teal {
   background-color: #47bcd4;
@@ -147,7 +151,7 @@
             ASIDEBAR
   ================================*/
 
-.aside-list h3{
+.aside-list h5{
   font-weight: 500;
   padding: 1rem;
   background-color: #111;

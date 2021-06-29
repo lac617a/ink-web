@@ -25,7 +25,7 @@
 		<div class="wrapper-header">
 			<div class="header-logo">
 				<div class="logo">
-					<a href="/"><img width="80" height="80" class="log" src="{%static 'img/logo.png'%}" alt="Logo"></a>
+					<a href="/"><img width="150" height="60" class="log" src="{%static 'img/logo.png'%}" alt="Logo"></a>
 				</div>
 			</div>
 			{% block seeker %}
@@ -47,7 +47,7 @@
 			<div class="home">
 				<a href="/"><i class="fas fa-home"></i></a>
 			</div>
-			{% if request.path != '/' or request.path != 'maintenance/' %}
+			{% if request.path != '/' %}
 			<button class="seeker _private">
 				<i class="fas fa-search"></i>
 			</button>

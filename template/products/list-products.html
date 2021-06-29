@@ -35,12 +35,17 @@
                     <span class="tag tag-teal">{{query.pdCategories}}</span>
                     <span class="tag tag-teal">{{query.pdBrand}}</span>
                   </div>
-                  <h4>{{query.pdName}}</h4>
+                  <h4>$ {{query.pdPrice}}</h4>
+                  {% if query.pdName|length >= 25 %}
+                  <h6 style="font-size: 12px;">{{query.pdName}}</h6>
+                  {%else%}
+                  <h6>{{query.pdName}}</h6>
+                  {%endif%}
                   <p>
                     {{query.pdDescription|truncatechars_html:50|safe|striptags}}
                     {% if query.pdDescription|length >= 50 %}<a href="{% url 'Product:more-view' query.id %}">Ver mas</a>{% endif %}
                   </p>
-                  <p>Precio: <small>{{query.pdPrice}}</small></p>
+                  <p></p>
                   <div class="shopping-box">
                     <div class="cart">
                       <a
@@ -53,7 +58,7 @@
                       </a>
                     </div>
                     <div class="eye">
-                      <a style="display: block;" href="{% url 'Product:more-view' query.id %}">
+                      <a style="display: block;" href="{% url 'Product:more-view' query.pdName|slugify %}">
                         <span>Vista previa <i class="fas fa-eye"></i></span>
                       </a>
                     </div>
@@ -68,7 +73,7 @@
         <div class="pagination">
           {% if qs.has_previous %}
           <div class="page-link-custom">
-            <a href="?page={{ qs.previous_page_number }}">previous</a>
+            <a href="?page={{ qs.previous_page_number }}{% if request.GET.search %}&buscar={{ request.GET.search }}{% endif %}">previous</a>
           </div>
           {% endif %}
           <span class="current">
@@ -76,7 +81,7 @@
           </span>
           {% if qs.has_next %}
           <div class="page-link-custom">
-            <a href="?page={{ qs.next_page_number }}">next</a>
+            <a href="?page={{ qs.next_page_number }}{% if request.GET.search %}&buscar={{ request.GET.search }}{% endif %}">next</a>
           </div>
           {% endif %}
         </div>

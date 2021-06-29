@@ -36,7 +36,7 @@ class Brands(models.Model):
 class Products(models.Model):
   pdCode        = models.IntegerField(unique=True,verbose_name="Codigo del producto",help_text="Es requerido")
   pdName        = models.CharField(max_length=60,verbose_name="Nombre del pruducto",blank=False)
-  pdPrice       = models.DecimalField(decimal_places=3,max_digits=100000,verbose_name="Precio de venta",help_text="Tome en cuenta el precio adecuado para su producto",blank=False)
+  pdPrice       = models.CharField(max_length=10,verbose_name="Precio de venta",help_text="Tome en cuenta el precio adecuado para su producto y sequido de una ','",blank=False)
   pdBrand       = models.ForeignKey(Brands,on_delete=models.CASCADE,verbose_name="Marca del producto",help_text="Este campo es requerido",blank=True)
   pdCategories  = models.ForeignKey(to=Category,on_delete=models.CASCADE, verbose_name="Categoria relacionada con el producto")
   pdDescription = RichTextField(verbose_name="Descripcion del producto")
@@ -45,13 +45,13 @@ class Products(models.Model):
   pdImage       = models.ImageField(upload_to="products/%Y/%m/%d",verbose_name="Cargar una imagen para el producto",null=True,blank=True)
   pdState       = models.BooleanField(default=True, verbose_name="Estado = Visto/Oculto")
   pdUpdate      = models.DateTimeField(auto_now=True, auto_now_add=False)
-  pdCreate      = models.DateTimeField(auto_now=True,auto_now_add=False)
+  pdCreate      = models.DateTimeField(auto_now=False,auto_now_add=True)
 
   def total_likes(self):
-    return self.likes.count()
+    return self.pdLikes.count()
 
   def con_likes(self):
-    return self.likes.count() - 1
+    return self.pdLikes.count() - 1
 
   def __str__(self):
     return self.pdName

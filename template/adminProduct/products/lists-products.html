@@ -6,10 +6,43 @@
 <link rel="stylesheet" href="{% static 'css/modal.css' %}">
 {% endblock %}
 {% block body %}
-<button class="btn-modal modal-create btn-primary" data-product-url="{% url 'Admin:addProducts' %}" type="button">Crear registro</button>
+<div class="row justify-content-center">
+  <div class="col-sm-6 col-md-10 col-lg-3 shadow-lg p-3 m-2 bg-body rounded">
+    <div class="card h-100 m-0">
+      <div class="card-body">
+        <h4 class="card-title h4">Total de productos.</h4>
+        <div class="total-products">
+          <div class="row">
+            <div class="col-lg-6 col-6">
+              <i class="fas fa-box-open" style="color: #7CBF69;"></i>
+            </div>
+            <div class="col-lg-6 col-6 text-end">
+              <span>{{total_products}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-10 col-lg-7 shadow-lg p-3 m-2 bg-body rounded">
+    <div class="card  h-100 m-0">
+      <div class="card-body">
+        <h5 class="card-title">Hacer busqueda de productos por (Código / Nombre)</h5>
+        <form method="GET">
+          <div class="mb-3">
+            <input type="text" placeholder="Buscar..." value="{{request.GET.searchCode}}" name="searchCode" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Buscar producto</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table class="table table-responsive">
-  <thead class="bg-dark text-white">
+
+<button class="btn-modal modal-create btn-primary" style="margin: .5rem 0;" data-product-url="{% url 'Admin:addProducts' %}" type="button">Crear registro</button>
+<table class="table table-responsive" {% if request.GET.searchCode %} style="height: 100vh;" {% endif %}>
+  <thead class="text-white" style="background-color: #111;">
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Codigo</th>
@@ -41,7 +74,7 @@
 <div class="pagination">
   {% if qs.has_previous %}
   <div class="page-link-custom">
-    <a href="?page={{ qs.previous_page_number }}">previous</a>
+    <a href="?page={{ qs.previous_page_number }}{% if request.GET.searchCode %}&buscar={{ request.GET.searchCode }}{% endif %}">previous</a>
   </div>
   {% endif %}
   <span class="current">
@@ -49,7 +82,7 @@
   </span>
   {% if qs.has_next %}
   <div class="page-link-custom">
-    <a href="?page={{ qs.next_page_number }}">next</a>
+    <a href="?page={{ qs.next_page_number }}{% if request.GET.searchCode %}&buscar={{ request.GET.searchCode }}{% endif %}">next</a>
   </div>
   {% endif %}
 </div>
