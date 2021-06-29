@@ -105,7 +105,7 @@ class GetBrandsProduView(GetCategoryProduView):
   def get(self,request,slug,*args,**kwargs):
     slug = slug.replace('-',' ')
     seeker = request.GET.get('search')
-    get_state = self.model.objects.filter(pdState=True,pdBrand=Brands.objects.get(brName=slug))
+    get_state = self.model.objects.filter(pdState=True,pdBrand=Brands.objects.get(brName__iexact=slug))
     if seeker:
       get_state = self.model.objects.filter(
         Q(pdName__icontains=seeker) |
