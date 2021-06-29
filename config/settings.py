@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'order',
     'products',
     'ckeditor',
+    'storages'
 ]
 
 #Custom user model
